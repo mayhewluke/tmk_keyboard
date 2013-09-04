@@ -34,7 +34,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right hand
              QUOT,6,   7,   8,   9,   0,   EQL,
              FN3, Y,   U,   I,   O,   P,   LBRC,
-                  H,   J,   K,   L,   SCLN,MINS,
+                  FN14,J,   K,   L,   SCLN,MINS,
              FN4, N,   M,   COMM,DOT, SLSH,RBRC,
                        LEFT,UP,  DOWN,RGHT,FN4,
         PGUP,DEL,
@@ -76,7 +76,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right hand
              SLCK,NLCK,PSLS,PAST,PAST,PMNS,BSPC,
              TRNS,NO,  P7,  P8,  P9,  PMNS,BSPC,
-                  NO,  P4,  P5,  P6,  PPLS,PENT,
+                  TRNS,P4,  P5,  P6,  PPLS,PENT,
              TRNS,NO,  P1,  P2,  P3,  PPLS,PENT,
                        P0,  PDOT,SLSH,PENT,PENT,
         TRNS,TRNS,
@@ -219,8 +219,9 @@ static const uint16_t PROGMEM fn_actions[] = {
     ACTION_MODS_TAP_KEY(MOD_RSFT, KC_ENT),          // FN12 = RShift with tap Enter
     ACTION_MODS_TAP_KEY(MOD_RCTL, KC_SPC),          // FN13 = RCtrl with tap Space
 
+    ACTION_LAYER_TAP_KEY(2, KC_H),                  // FN14 = L2 symbols on J key, to use with Mouse keys
+
     /*
-    ACTION_LAYER_TAP_KEY(1, KC_SPC),                // FN0 = L1 symbols 
     ACTION_LAYER_TAP_KEY(1, KC_ENT),                // FN5 = L1 symbols 
     */
 };
