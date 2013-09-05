@@ -34,8 +34,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right hand
              QUOT,6,   7,   8,   9,   0,   EQL,
              FN3, Y,   U,   I,   O,   P,   LBRC,
-                  FN14,J,   K,   L,   SCLN,MINS,
-             FN4, N,   M,   COMM,DOT, SLSH,RBRC,
+                  FN16,J,   K,   L,   SCLN,FN14,
+             FN4, N,   M,   COMM,DOT, SLSH,FN15,
                        LEFT,UP,  DOWN,RGHT,FN4,
         PGUP,DEL,
         PGDN,
@@ -218,12 +218,10 @@ static const uint16_t PROGMEM fn_actions[] = {
     ACTION_MODS_TAP_KEY(MOD_RALT, KC_INS),          // FN11 = RAlt with tap Ins
     ACTION_MODS_TAP_KEY(MOD_RSFT, KC_ENT),          // FN12 = RShift with tap Enter
     ACTION_MODS_TAP_KEY(MOD_RCTL, KC_SPC),          // FN13 = RCtrl with tap Space
+    ACTION_MODS_TAP_KEY(MOD_RSFT, KC_MINS),         // FN14 = RShift with tap Enter
+    ACTION_MODS_TAP_KEY(MOD_RCTL, KC_RBRC),         // FN15 = RCtrl with tap Space
 
-    ACTION_LAYER_TAP_KEY(2, KC_H),                  // FN14 = L2 symbols on J key, to use with Mouse keys
-
-    /*
-    ACTION_LAYER_TAP_KEY(1, KC_ENT),                // FN5 = L1 symbols 
-    */
+    ACTION_LAYER_TAP_KEY(2, KC_H),                  // FN16 = L2 symbols on J key, to use with Mouse keys
 };
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
@@ -232,15 +230,11 @@ void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
     print("id  = "); phex(id); print("\n");
     print("opt = "); phex(opt); print("\n");
     if (id == TEENSY_KEY) {
-        /*
-         * this won't work, idk why
-         */
         clear_keyboard();
         print("\n\nJump to bootloader... ");
         _delay_ms(250);
         bootloader_jump(); // should not return
         print("not supported.\n");
-        /**/
     }
 }
 
