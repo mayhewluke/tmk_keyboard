@@ -90,6 +90,7 @@ uint8_t init_mcp23018(void) {
     err = i2c_write(0b00000000);        if (err) goto out;
     err = i2c_write(0b00111111);        if (err) goto out;
     i2c_stop();
+
     // set pull-up
     // - unused  : on  : 1
     // - input   : on  : 1
@@ -98,7 +99,17 @@ uint8_t init_mcp23018(void) {
     err = i2c_write(GPPUA);             if (err) goto out;
     err = i2c_write(0b00000000);        if (err) goto out;
     err = i2c_write(0b00111111);        if (err) goto out;
+
+out:
     i2c_stop();
+
+    if (!err) err = ergodox_left_leds_update();
+
+    return err;
+}
+
+uint8_t ergodox_left_leds_update(void) {
+    uint8_t err = 0x20;
 
     // set logical value (doesn't matter on inputs)
     // - unused  : hi-Z : 1
