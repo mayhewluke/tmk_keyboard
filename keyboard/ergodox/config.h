@@ -50,7 +50,8 @@ Project located at <https://github.com/benblazak/ergodox-firmware>
  *
  * And so, there is no sense to have DEBOUNCE higher than 2.
  */
-#define DEBOUNCE    2
+#define DEBOUNCE        2
+#define TAPPING_TERM    180
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
