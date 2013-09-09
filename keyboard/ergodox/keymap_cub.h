@@ -1,40 +1,109 @@
 static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /* Keymap 0: Default Layer
+    /*
+     * Keymap: Default Layer in QWERTY
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * |   ~    |   1  |   2  |   3  |   4  |   5  |   \  |           |   '  |   6  |   7  |   8  |   9  |   0  |   =    |
+     * |   ~    |   1  |   2  |   3  |   4  |   5  |   [  |           |   ]  |   6  |   7  |   8  |   9  |   0  |   =    |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * | Tab    |   Q  |   W  |   E  |   R  |   T  | ~Fn1 |           | ~Fn3 |   Y  |   U  |   I  |   O  |   P  |   [    |
+     * | Tab    |   Q  |   W  |   E  |   R  |   T  | ~L1  |           | ~L3  |   Y  |   U  |   I  |   O  |   P  |   '    |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * | LShift |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  | RShift |
-     * |--------+------+------+------+------+------|  Fn0 |           | ~Fn4 |------+------+------+------+------+--------|
-     * | LCtrl  |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RCtrl  |
+     * | LShift |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  | - FN14 |
+     * |--------+------+------+------+------+------|  L0  |           | ~L4  |------+------+------+------+------+--------|
+     * | LCtrl  |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | \ FN15 |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   | ~Fn1 | ~Fn2 | Caps | LAlt | LGui |                                       |  Lft |  Up  |  Dn  | Rght | ~Fn4 |
+     *   | ~L1  | ~L2  | Caps | LAlt | LGui |                                       |  Lft |  Up  |  Dn  | Rght | ~L4  |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
-     *                                        | +Fn2 | Home |       | PgUp | Del  |
+     *                                        | +L2  | Home |       | PgUp | Del  |
      *                                 ,------|------|------|       |------+------+------.
      *                                 |      |      |  End |       | PgDn |      |      |
      *                                 | BkSp |  ESC |------|       |------| Enter| Space|
      *                                 |      |      |  Spc |       | Ins  |      |      |
      *                                 `--------------------'       `--------------------'
+     *
+     *
+     *
+     ****************************************************************************************************
+     *
+     * Under XOrg, I use my own mapping from QWERTY to "Workman for Programmers"
+     * See XOrg files in ./addons/ subdirectory.
+     *
+     * I have to do so, because of two things:
+     * 1) my native language is Russian, and XOrg keymap for it is based on QWERTY layout
+     * 2) I want to have non-standart shifted keys, like $ (as normal) and @ (as shifted), or _ and -
+     *
+     * And even if (2) could be solved using FN* keys (but there is limit in firmware for only 32 such
+     * keys), then (1) can't be solved at firmware level at all.
+     *
+     * So, I have to stick with QWERTY as my main layout + my own XOrg keyboard layout for English.
+     * But sometimes I have to input something when XOrg is not active - for example, in Linux console,
+     * or in firmware console (while debugging firmware), or when keyboard is connected to not my computer.
+     *
+     * For such cases I have Layer5 :)
+     * // hint: switch to Layer5 is only at Layer4
+     *
+     ****************************************************************************************************
+     *
+     *
+     *
+     * Keymap: Default Layer in Workman
+     *
+     * ,--------------------------------------------------.           ,--------------------------------------------------.
+     * |   ~    |   ;  |   !  |   #  |   {  |   }  |   '  |           |   ^  |   [  |   ]  |   *  |   (  |   )  |   =    |
+     * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+     * | Tab    |   Q  |   D  |   R  |   W  |   B  | ~L1  |           | ~L3  |   J  |   F  |   U  |   P  |   $  |   :    |
+     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+     * | LShift |   A  |   S  |   H  |   T  |   G  |------|           |------|   Y  |   N  |   E  |   O  |   I  | _ FN14 |
+     * |--------+------+------+------+------+------|  L0  |           | ~L4  |------+------+------+------+------+--------|
+     * | LCtrl  |   Z  |   X  |   M  |   C  |   V  |      |           |      |   K  |   L  |   ,  |   .  |   /  | | FN15 |
+     * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+     *   | ~L1  | ~L2  | Caps | LAlt | LGui |                                       |  Lft |  Up  |  Dn  | Rght | ~L4  |
+     *   `----------------------------------'                                       `----------------------------------'
+     *                                        ,-------------.       ,-------------.
+     *                                        | +L2  | Home |       | PgUp | Del  |
+     *                                 ,------|------|------|       |------+------+------.
+     *                                 |      |      |  End |       | PgDn |      |      |
+     *                                 | BkSp |  ESC |------|       |------| Enter| Space|
+     *                                 |      |      |  Spc |       | Ins  |      |      |
+     *                                 `--------------------'       `--------------------'
+     *
+     * Keymap: Default Layer in Workman / with Shift
+     *
+     * ,--------------------------------------------------.           ,--------------------------------------------------.
+     * |   `    |   1  |   2  |   3  |   4  |   5  |   "  |           |   \  |   6  |   7  |   8  |   9  |   0  |   +    |
+     * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+     * | Tab    |   Q  |   D  |   R  |   W  |   B  | ~L1  |           | ~L3  |   J  |   F  |   U  |   P  |   @  |   %    |
+     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+     * | LShift |   A  |   S  |   H  |   T  |   G  |------|           |------|   Y  |   N  |   E  |   O  |   I  | - FN14 |
+     * |--------+------+------+------+------+------|  L0  |           | ~L4  |------+------+------+------+------+--------|
+     * | LCtrl  |   Z  |   X  |   M  |   C  |   V  |      |           |      |   K  |   L  |   ,  |   .  |   /  | & FN15 |
+     * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+     *   | ~L1  | ~L2  | Caps | LAlt | LGui |                                       |  Lft |  Up  |  Dn  | Rght | ~L4  |
+     *   `----------------------------------'                                       `----------------------------------'
+     *                                        ,-------------.       ,-------------.
+     *                                        | +L2  | Home |       | PgUp | Del  |
+     *                                 ,------|------|------|       |------+------+------.
+     *                                 |      |      |  End |       | PgDn |      |      |
+     *                                 | BkSp |  ESC |------|       |------| Enter| Space|
+     *                                 |      |      |  Spc |       | Ins  |      |      |
+     *                                 `--------------------'       `--------------------'
+     *
      */
 
     KEYMAP(  // layout: layer 0: default
         // left hand
-        GRV, 1,   2,   3,   4,   5,   BSLS,
+        GRV, 1,   2,   3,   4,   5,   LBRC,
         TAB, Q,   W,   E,   R,   T,   FN1,
-        LSFT,A,   S,   D,   F,   G,
+        FN16,FN18,S,   D,   F,   G,
         LCTL,Z,   X,   C,   V,   B,   FN0,
         FN1, FN6, CAPS,LALT,LGUI,
                                       FN2, HOME,
                                            END,
                                  FN8, FN9, FN10,
         // right hand
-             QUOT,6,   7,   8,   9,   0,   EQL,
-             FN3, Y,   U,   I,   O,   P,   LBRC,
-                  FN16,J,   K,   L,   SCLN,FN14,
+             RBRC,6,   7,   8,   9,   0,   EQL,
+             FN3, Y,   U,   I,   O,   P,   QUOT,
+                  FN17,J,   K,   L,   FN19,FN14,
              FN4, N,   M,   COMM,DOT, SLSH,FN15,
                        LEFT,UP,  DOWN,RGHT,FN4,
         PGUP,DEL,
@@ -86,9 +155,9 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KEYMAP(  // layout: layer 3: F-keys only
         // left hand
-        TRNS,NO,  NO,  NO,  NO,  NO,  NO,  
+        TRNS,NO,  NO,  NO,  NO,  NO,  NO,
         TRNS,F13, F14, F15, F16, NO,  TRNS,
-        TRNS,F17, F18, F19, F20, NO,  
+        TRNS,F17, F18, F19, F20, NO,
         TRNS,F21, F22, F23, F24, NO,  TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
@@ -147,14 +216,35 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,TRNS,TRNS
     ),
 
+    KEYMAP(  // layout: layer 6: F-keys on home+1 row
+        // left hand
+        TRNS,NO,  NO,  NO,  NO,  NO,  NO,
+        TRNS,F1,  F2,  F3,  F4,  F5,  F11,
+        TRNS,TRNS,NO,  NO,  NO,  NO,
+        TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
+        TRNS,TRNS,TRNS,LALT,LGUI,
+                                      TRNS,TRNS,
+                                           TRNS,
+                                 LCTL,LSFT,TRNS,
+        // right hand
+             NO,  NO,  NO,  NO,  NO,  NO,  TRNS,
+             F12, F6,  F7,  F8,  F9,  F10, PGUP,
+                  NO,  NO,  NO,  NO,  TRNS,PGDN,
+             TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
+                       RGUI,RALT,TRNS,TRNS,TRNS,
+        TRNS,TRNS,
+        TRNS,
+        TRNS,RSFT,RCTL
+    ),
+
 /*
     // templates to copy from
 
     KEYMAP(  // layout: layer N: transparent on edges, all others are empty
         // left hand
-        TRNS,NO,  NO,  NO,  NO,  NO,  NO,  
+        TRNS,NO,  NO,  NO,  NO,  NO,  NO,
         TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
-        TRNS,NO,  NO,  NO,  NO,  NO,  
+        TRNS,NO,  NO,  NO,  NO,  NO,
         TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
         TRNS,TRNS,TRNS,LALT,LGUI,
                                       TRNS,TRNS,
@@ -219,9 +309,12 @@ static const uint16_t PROGMEM fn_actions[] = {
     ACTION_MODS_TAP_KEY(MOD_RSFT, KC_ENT),          // FN12 = RShift with tap Enter
     ACTION_MODS_TAP_KEY(MOD_RCTL, KC_SPC),          // FN13 = RCtrl with tap Space
     ACTION_MODS_TAP_KEY(MOD_RSFT, KC_MINS),         // FN14 = RShift with tap Enter
-    ACTION_MODS_TAP_KEY(MOD_RCTL, KC_RBRC),         // FN15 = RCtrl with tap Space
+    ACTION_MODS_TAP_KEY(MOD_RCTL, KC_BSLS),         // FN15 = RCtrl with tap Space
+    ACTION_MODS_TAP_KEY(MOD_LSFT, KC_TAB),          // FN16 = LShift with tap Tab
 
-    ACTION_LAYER_TAP_KEY(2, KC_H),                  // FN16 = L2 symbols on J key, to use with Mouse keys
+    ACTION_LAYER_TAP_KEY(2, KC_H),                  // FN17 = L2 symbols on J key, to use with Mouse keys
+    ACTION_LAYER_TAP_KEY(6, KC_A),                  // FN18 = L6 symbols on A key, to use with F* keys
+    ACTION_LAYER_TAP_KEY(6, KC_SCLN),               // FN19 = L6 symbols on ; key, to use with F* keys
 };
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
