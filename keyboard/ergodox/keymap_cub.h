@@ -94,8 +94,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         GRV, 1,   2,   3,   4,   5,   LBRC,
         TAB, Q,   W,   E,   R,   T,   FN1,
-        FN16,FN19,S,   D,   F,   G,
-        LCTL,Z,   X,   C,   V,   B,   FN0,
+        FN16,FN20,S,   D,   F,   G,
+        LCTL,Z,   X,   C,   FN19,B,   FN0,
         FN1, FN6, CAPS,LALT,FN17,
                                       FN2, HOME,
                                            END,
@@ -103,7 +103,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right hand
              RBRC,6,   7,   8,   9,   0,   EQL,
              FN3, Y,   U,   I,   O,   P,   QUOT,
-                  FN18,J,   K,   L,   FN20,FN14,
+                  FN18,J,   K,   L,   FN21,FN14,
              FN4, N,   M,   COMM,DOT, SLSH,FN15,
                        LEFT,UP,  DOWN,RGHT,FN4,
         PGUP,DEL,
@@ -137,7 +137,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,NO,  NO,  NO,  NO,  PAUS,PSCR,
         TRNS,WH_L,WH_U,WH_D,WH_R,BTN2,TRNS,
         TRNS,MS_L,MS_U,MS_D,MS_R,BTN1,
-        TRNS,NO,  NO,  NO,  NO,  BTN3,TRNS,
+        TRNS,NO,  NO,  NO,  TRNS,BTN3,TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
                                            TRNS,
@@ -314,8 +314,9 @@ static const uint16_t PROGMEM fn_actions[] = {
     ACTION_MODS_TAP_KEY(MOD_LGUI, KC_ESC),          // FN17 = LShift with tap Tab
 
     ACTION_LAYER_TAP_KEY(2, KC_H),                  // FN18 = L2 symbols on J key, to use with Mouse keys
-    ACTION_LAYER_TAP_KEY(6, KC_A),                  // FN19 = L6 symbols on A key, to use with F* keys
-    ACTION_LAYER_TAP_KEY(6, KC_SCLN),               // FN20 = L6 symbols on ; key, to use with F* keys
+    ACTION_LAYER_TAP_KEY(2, KC_V),                  // FN19 = L2 symbols on V key, to use with Numpad keys
+    ACTION_LAYER_TAP_KEY(6, KC_A),                  // FN20 = L6 symbols on A key, to use with F* keys
+    ACTION_LAYER_TAP_KEY(6, KC_SCLN),               // FN21 = L6 symbols on ; key, to use with F* keys
 };
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
