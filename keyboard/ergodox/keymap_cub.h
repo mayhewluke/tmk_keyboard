@@ -3,13 +3,13 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * Keymap: Default Layer in QWERTY
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * |   ~    |   1  |   2  |   3  |   4  |   5  |   [  |           |   ]  |   6  |   7  |   8  |   9  |   0  |   =    |
+     * |   ~    |   1  |   2  |   3  |   4  |   5  |   \  |           |   -  |   6  |   7  |   8  |   9  |   0  |   =    |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * | Tab    |   Q  |   W  |   E  |   R  |   T  | ~L1  |           | ~L3  |   Y  |   U  |   I  |   O  |   P  |   '    |
+     * | Tab    |   Q  |   W  |   E  |   R  |   T  | ~L1  |           | ~L3  |   Y  |   U  |   I  |   O  |   P  |   [    |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * | LShift |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  | - FN14 |
+     * | LShift |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  | ' FN14 |
      * |--------+------+------+------+------+------|  L0  |           | ~L4  |------+------+------+------+------+--------|
-     * | LCtrl  |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | \ FN15 |
+     * | LCtrl  |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | ] FN15 |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
      *   | ~L1  | ~L2  | Caps | LAlt | LGui |                                       |  Lft |  Up  |  Dn  | Rght | ~L4  |
      *   `----------------------------------'                                       `----------------------------------'
@@ -53,7 +53,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
      * | Tab    |   Q  |   D  |   R  |   W  |   B  | ~L1  |           | ~L3  |   J  |   F  |   U  |   P  |   $  |   :    |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * | LShift |   A  |   S  |   H  |   T  |   G  |------|           |------|   Y  |   N  |   E  |   O  |   I  | _ FN14 |
+     * | LShift |   A  |   S  |   H  |   T  |   G  |------|           |------|   Y  |   N  |   E  |   O  |   I  | - FN14 |
      * |--------+------+------+------+------+------|  L0  |           | ~L4  |------+------+------+------+------+--------|
      * | LCtrl  |   Z  |   X  |   M  |   C  |   V  |      |           |      |   K  |   L  |   ,  |   .  |   /  | | FN15 |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -74,7 +74,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
      * | Tab    |   Q  |   D  |   R  |   W  |   B  | ~L1  |           | ~L3  |   J  |   F  |   U  |   P  |   @  |   %    |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * | LShift |   A  |   S  |   H  |   T  |   G  |------|           |------|   Y  |   N  |   E  |   O  |   I  | - FN14 |
+     * | LShift |   A  |   S  |   H  |   T  |   G  |------|           |------|   Y  |   N  |   E  |   O  |   I  | _ FN14 |
      * |--------+------+------+------+------+------|  L0  |           | ~L4  |------+------+------+------+------+--------|
      * | LCtrl  |   Z  |   X  |   M  |   C  |   V  |      |           |      |   K  |   L  |   ,  |   .  |   /  | & FN15 |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -92,7 +92,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KEYMAP(  // layout: layer 0: default
         // left hand
-        GRV, 1,   2,   3,   4,   5,   LBRC,
+        GRV, 1,   2,   3,   4,   5,   BSLS,
         TAB, Q,   W,   E,   R,   T,   FN1,
         FN16,FN20,S,   D,   F,   G,
         LCTL,Z,   X,   C,   FN19,B,   FN0,
@@ -101,8 +101,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                            END,
                                  FN8, FN9, FN10,
         // right hand
-             RBRC,6,   7,   8,   9,   0,   EQL,
-             FN3, Y,   U,   I,   O,   P,   QUOT,
+             MINS,6,   7,   8,   9,   0,   EQL,
+             FN3, Y,   U,   I,   O,   P,   LBRC,
                   FN18,J,   K,   L,   FN21,FN14,
              FN4, N,   M,   COMM,DOT, SLSH,FN15,
                        LEFT,UP,  DOWN,RGHT,FN4,
@@ -249,9 +249,9 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  LCTL,LSFT,TRNS,
         // right hand
              NO,  NO,  NO,  NO,  NO,  NO,  TRNS,
-             TRNS,NO,  F1,  F2,  F3,  F4,  PGUP,
-                  NO,  F5,  F6,  F7,  F8,  PGDN,
-             TRNS,NO,  F9,  F10, F11, F12, TRNS,
+             TRNS,MINS,F1,  F2,  F3,  F4,  PGUP,
+                  BSLS,F5,  F6,  F7,  F8,  PGDN,
+             TRNS,FN22,F9,  F10, F11, F12, FN23,
                        RGUI,RALT,TRNS,TRNS,TRNS,
         TRNS,TRNS,
         TRNS,
@@ -329,15 +329,18 @@ static const uint16_t PROGMEM fn_actions[] = {
     ACTION_MODS_TAP_KEY(MOD_RALT, KC_INS),          // FN11 = RAlt with tap Ins
     ACTION_MODS_TAP_KEY(MOD_RSFT, KC_ENT),          // FN12 = RShift with tap Enter
     ACTION_MODS_TAP_KEY(MOD_RCTL, KC_SPC),          // FN13 = RCtrl with tap Space
-    ACTION_MODS_TAP_KEY(MOD_RSFT, KC_MINS),         // FN14 = RShift with tap Enter
-    ACTION_MODS_TAP_KEY(MOD_RCTL, KC_BSLS),         // FN15 = RCtrl with tap Space
+    ACTION_MODS_TAP_KEY(MOD_RSFT, KC_QUOT),         // FN14 = RShift with tap quotes
+    ACTION_MODS_TAP_KEY(MOD_RCTL, KC_RBRC),         // FN15 = RCtrl with tap ]
     ACTION_MODS_TAP_KEY(MOD_LSFT, KC_TAB),          // FN16 = LShift with tap Tab
-    ACTION_MODS_TAP_KEY(MOD_LGUI, KC_ESC),          // FN17 = LShift with tap Tab
+    ACTION_MODS_TAP_KEY(MOD_LGUI, KC_ESC),          // FN17 = LShift with tap Escape
 
-    ACTION_LAYER_TAP_KEY(2, KC_H),                  // FN18 = L2 symbols on J key, to use with Mouse keys
+    ACTION_LAYER_TAP_KEY(2, KC_H),                  // FN18 = L2 symbols on H key, to use with Mouse keys
     ACTION_LAYER_TAP_KEY(2, KC_V),                  // FN19 = L2 symbols on V key, to use with Numpad keys
     ACTION_LAYER_TAP_KEY(7, KC_A),                  // FN20 = L7 symbols on A key, to use with F* keys
     ACTION_LAYER_TAP_KEY(6, KC_SCLN),               // FN21 = L6 symbols on ; key, to use with F* keys
+
+    ACTION_MODS_KEY(MOD_LSFT, KC_BSLS),             // FN22 = Shifted BackSlash // " in Workman
+    ACTION_MODS_KEY(MOD_LSFT, KC_MINS),             // FN23 = Shifted Minus     // \ in Workman
 };
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)

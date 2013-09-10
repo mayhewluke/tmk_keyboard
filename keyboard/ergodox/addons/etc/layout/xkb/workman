@@ -132,11 +132,11 @@ xkb_symbols "wce" {
     name[Group1] = "Workman for Programmers, with light modifications from cub@uanic, for Ergodox";
 
     //             Unmodified       Shift           AltGr            Shift+AltGr
-    key <AD11>	{ [ apostrophe,      quotedbl                                    ]	};
-    key <AD12>	{ [ asciicircum,     backslash                                   ]	};
-    key <AC11>	{ [ colon,           percent                                     ]	};
-    key <AE11>	{ [ underscore,      minus,          hyphen                      ]	};
-    key <BKSL>  { [ bar,             ampersand                                   ]  };
+    key <BKSL>	{ [ apostrophe,      quotedbl                                    ]	};
+    key <AE11>	{ [ asciicircum,     backslash                                   ]	};
+    key <AD11>	{ [ colon,           percent                                     ]	};
+    key <AC11>	{ [ minus,           underscore,     hyphen                      ]	};
+    key <AD12>	{ [ bar,             ampersand                                   ]	};
 };
 
 
