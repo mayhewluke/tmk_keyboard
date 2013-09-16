@@ -103,7 +103,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right hand
              MINS,6,   7,   8,   9,   0,   EQL,
              FN20,Y,   U,   I,   O,   P,   LBRC,
-                  FN22,J,   K,   L,   FN26,FN13,
+                  FN22,J,   K,   L,   SCLN,FN13,
              FN21,N,   M,   COMM,DOT, SLSH,FN14,
                        LEFT,UP,  DOWN,RGHT,FN20,
         PGUP,DEL,
@@ -269,27 +269,6 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,TRNS,TRNS
     ),
 
-    KEYMAP(  // Layer8: F-keys on home+1 row
-        // left hand
-        TRNS,NO,  NO,  NO,  NO,  NO,  NO,
-        TRNS,F1,  F2,  F3,  F4,  F5,  F11,
-        TRNS,TRNS,NO,  NO,  NO,  NO,
-        TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
-        TRNS,TRNS,TRNS,LALT,LGUI,
-                                      TRNS,TRNS,
-                                           TRNS,
-                                 LCTL,LSFT,TRNS,
-        // right hand
-             NO,  NO,  NO,  NO,  NO,  NO,  TRNS,
-             F12, F6,  F7,  F8,  F9,  F10, PGUP,
-                  NO,  NO,  NO,  NO,  TRNS,PGDN,
-             TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
-                       RGUI,RALT,TRNS,TRNS,TRNS,
-        TRNS,TRNS,
-        TRNS,
-        TRNS,RSFT,RCTL
-    ),
-
 /*
     // templates to copy from
 
@@ -378,7 +357,6 @@ static const uint16_t PROGMEM fn_actions[] = {
     ACTION_LAYER_TAP_KEY(2, KC_V),                  // FN23 = momentary Layer2 on V key, to use with Numpad keys
     ACTION_LAYER_TAP_KEY(3, KC_S),                  // FN24 = momentary Layer3 on S key, to use with F* keys
     ACTION_LAYER_TAP_KEY(4, KC_A),                  // FN25 = momentary Layer4 on A key, to use with unconvenient keys
-    ACTION_LAYER_TAP_KEY(8, KC_SCLN),               // FN26 = momentary Layer8 on ; key, to use with F* keys on home+1 row
 };
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
