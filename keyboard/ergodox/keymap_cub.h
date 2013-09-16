@@ -94,8 +94,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         GRV, 1,   2,   3,   4,   5,   BSLS,
         TAB, Q,   W,   E,   R,   T,   FN19,
-        FN11,FN25,FN24,D,   F,   G,
-        LCTL,Z,   X,   C,   FN23,B,   FN15,
+        FN11,FN24,FN23,FN25,FN22,G,
+        LCTL,Z,   X,   C,   V,   B,   FN15,
         FN19,FN18,CAPS,LALT,FN12,
                                       FN17,HOME,
                                            END,
@@ -103,7 +103,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right hand
              MINS,6,   7,   8,   9,   0,   EQL,
              FN20,Y,   U,   I,   O,   P,   LBRC,
-                  FN22,J,   K,   L,   SCLN,FN13,
+                  H,   J,   K,   L,   SCLN,FN13,
              FN21,N,   M,   COMM,DOT, SLSH,FN14,
                        LEFT,UP,  DOWN,RGHT,FN20,
         PGUP,DEL,
@@ -132,12 +132,12 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,TRNS,TRNS
     ),
 
-    KEYMAP(  // Layer2: mouse + numpad, leftled:blue
+    KEYMAP(  // Layer2: numpad, leftled:blue
         // left hand
         TRNS,NO,  NO,  NO,  NO,  PAUS,PSCR,
-        TRNS,WH_L,WH_U,WH_D,WH_R,BTN2,TRNS,
-        TRNS,MS_L,MS_U,MS_D,MS_R,BTN1,
-        TRNS,NO,  NO,  NO,  TRNS,BTN3,TRNS,
+        TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
+        TRNS,NO,  NO,  NO,  TRNS,NO,
+        TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
                                            TRNS,
@@ -248,7 +248,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // rarely used
     //
 
-    KEYMAP(  // Layer7: F-keys only
+    KEYMAP(  // Layer7: F-keys only, leftled:red
         // left hand
         TRNS,NO,  NO,  NO,  NO,  NO,  NO,
         TRNS,F13, F14, F15, F16, NO,  TRNS,
@@ -263,6 +263,28 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              TRNS,NO,  F1,  F2,  F3,  F4,  TRNS,
                   NO,  F5,  F6,  F7,  F8,  TRNS,
              TRNS,NO,  F9,  F10, F11, F12, TRNS,
+                       TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,
+        TRNS,
+        TRNS,TRNS,TRNS
+    ),
+
+    KEYMAP(  // Layer8: mouse and navigation, leftled:blue
+        // left hand
+        TRNS,NO,  NO,  NO,  NO,  NO,  NO,
+        TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
+        TRNS,NO,  NO,  TRNS,NO,  NO,
+        TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,
+                                      TRNS,TRNS,
+                                           TRNS,
+                                 TRNS,TRNS,TRNS,
+
+        // right hand
+             TRNS,NO,  NO,  NO,  NO,  NO,  NO,
+             TRNS,BTN2,WH_L,WH_U,WH_D,WH_R,PGUP,
+                  BTN1,MS_L,MS_U,MS_D,MS_R,PGDN,
+             TRNS,BTN3,HOME,END, DEL, INS, NO,
                        TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,
         TRNS,
@@ -353,10 +375,10 @@ static const uint16_t PROGMEM fn_actions[] = {
     ACTION_LAYER_MOMENTARY(6),                      // FN20 - momentary Layer6, to use with F* keys, cursor, Teensy, Workman-layer switch
     ACTION_LAYER_MOMENTARY(7),                      // FN21 - momentary Layer7, to use with F* keys (F1-F24)
 
-    ACTION_LAYER_TAP_KEY(2, KC_H),                  // FN22 = momentary Layer2 on H key, to use with Mouse keys
-    ACTION_LAYER_TAP_KEY(2, KC_V),                  // FN23 = momentary Layer2 on V key, to use with Numpad keys
-    ACTION_LAYER_TAP_KEY(3, KC_S),                  // FN24 = momentary Layer3 on S key, to use with F* keys
-    ACTION_LAYER_TAP_KEY(4, KC_A),                  // FN25 = momentary Layer4 on A key, to use with unconvenient keys
+    ACTION_LAYER_TAP_KEY(2, KC_F),                  // FN22 = momentary Layer2 on F key, to use with Numpad keys
+    ACTION_LAYER_TAP_KEY(3, KC_S),                  // FN23 = momentary Layer3 on S key, to use with F* keys
+    ACTION_LAYER_TAP_KEY(4, KC_A),                  // FN24 = momentary Layer4 on A key, to use with unconvenient keys
+    ACTION_LAYER_TAP_KEY(8, KC_D),                  // FN25 = momentary Layer8 on D key, to use with mouse and navigation keys
 };
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)

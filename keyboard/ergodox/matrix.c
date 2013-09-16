@@ -114,6 +114,7 @@ uint8_t matrix_scan(void)
             ergodox_left_led_3_on();
             break;
         case 2:
+        case 8:
             // blue
             ergodox_left_led_1_off();
             ergodox_left_led_2_on();
@@ -130,6 +131,7 @@ uint8_t matrix_scan(void)
             // break missed intentionally
         case 4:
         case 5:
+        case 7:
             // red
             ergodox_left_led_1_on();
             ergodox_left_led_2_off();
