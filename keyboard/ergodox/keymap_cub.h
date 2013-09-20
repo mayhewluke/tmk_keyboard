@@ -95,7 +95,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         GRV, 1,   2,   3,   4,   5,   BSLS,
         TAB, Q,   W,   E,   R,   T,   FN19,
         FN11,FN24,FN23,FN25,FN22,G,
-        LCTL,Z,   X,   C,   V,   B,   FN15,
+        LCTL,FN28,FN27,FN29,FN26,B,   FN15,
         FN19,FN18,CAPS,LALT,FN12,
                                       FN17,HOME,
                                            END,
@@ -137,7 +137,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,NO,  NO,  NO,  NO,  PAUS,PSCR,
         TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
         TRNS,NO,  NO,  NO,  TRNS,NO,
-        TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
+        TRNS,NO,  NO,  NO,  TRNS,NO,  TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
                                            TRNS,
@@ -158,7 +158,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,NO,  NO,  NO,  NO,  NO,  NO,
         TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
         TRNS,NO,  TRNS,NO,  NO,  NO,
-        TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
+        TRNS,NO,  TRNS,NO,  NO,  NO,  TRNS,
         TRNS,TRNS,TRNS,LALT,LGUI,
                                       TRNS,TRNS,
                                            TRNS,
@@ -179,23 +179,24 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,NO,  NO,  NO,  NO,  NO,  NO,
         TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
         TRNS,TRNS,NO,  NO,  NO,  NO,
-        TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
+        TRNS,TRNS,NO,  NO,  NO,  NO,  TRNS,
         TRNS,TRNS,TRNS,LALT,LGUI,
                                       TRNS,TRNS,
                                            TRNS,
                                  TRNS,TRNS,TRNS,
 
-        // in Workman this will be:
+        // in Workman right hand will be:
         //              =
-        //      { } ( ) +
-        //      ' " ^ ^ \
-        //      [ < > ] \
+        //    ^ { } ( ) +
+        //    ' ! $ " ; \
+        //    # [ < > ] AppMenu
+        //
 
         // right hand
              NO,  NO,  NO,  NO,  NO,  NO,  TRNS,
-             TRNS,NO,  4,   5,   9,   0,   PPLS,
-                  NO,  BSLS,FN1, MINS,MINS,FN2,
-             TRNS,NO,  6,   FN3, FN4, 7,   FN2,
+             TRNS,MINS,4,   5,   9,   0,   PPLS,
+                  BSLS,2,   P,   FN1, 1,   FN2,
+             TRNS,3,   6,   FN3, FN4, 7,   APP,
                        TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,
         TRNS,
@@ -228,7 +229,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,F1,  F2,  F3,  F4,  F5,  F6,
         FN0, NO,  PGUP,UP,  PGDN,PGUP,TRNS,
         TRNS,NO,  LEFT,DOWN,RGHT,PGDN,
-        TRNS,NO,  NO,  END, HOME,NO,  TRNS,
+        TRNS,INS, DEL, END, HOME,NO,  TRNS,
         FN16,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
                                            TRNS,
@@ -237,7 +238,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              F7,  F8,  F9,  F10, F11, F12, MINS,
              TRNS,PGUP,PGUP,UP,  PGDN,NO,  FN0,
                   PGDN,LEFT,DOWN,RGHT,NO,  TRNS,
-             TRNS,NO,  HOME,END, NO,  NO,  TRNS,
+             TRNS,NO,  HOME,END, DEL, INS, TRNS,
                        TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,
         TRNS,
@@ -269,12 +270,12 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,TRNS,TRNS
     ),
 
-    KEYMAP(  // Layer8: mouse and navigation, leftled:blue
+    KEYMAP(  // Layer8: mouse and navigation, leftled:blue and green
         // left hand
         TRNS,NO,  NO,  NO,  NO,  NO,  NO,
         TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
         TRNS,NO,  NO,  TRNS,NO,  NO,
-        TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
+        TRNS,NO,  NO,  TRNS,NO,  NO,  TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
                                            TRNS,
@@ -372,13 +373,18 @@ static const uint16_t PROGMEM fn_actions[] = {
 
     ACTION_LAYER_MOMENTARY(2),                      // FN18 - momentary Layer2, to use with Numpad keys
     ACTION_LAYER_MOMENTARY(5),                      // FN19 - momentary Layer5, to use with F* keys on top row
-    ACTION_LAYER_MOMENTARY(6),                      // FN20 - momentary Layer6, to use with F* keys, cursor, Teensy, Workman-layer switch
+    ACTION_LAYER_MOMENTARY(6),                      // FN20 - momentary Layer6, to use with F* keys on top row, cursor, Teensy, Workman-layer switch
     ACTION_LAYER_MOMENTARY(7),                      // FN21 - momentary Layer7, to use with F* keys (F1-F24)
 
     ACTION_LAYER_TAP_KEY(2, KC_F),                  // FN22 = momentary Layer2 on F key, to use with Numpad keys
     ACTION_LAYER_TAP_KEY(3, KC_S),                  // FN23 = momentary Layer3 on S key, to use with F* keys
     ACTION_LAYER_TAP_KEY(4, KC_A),                  // FN24 = momentary Layer4 on A key, to use with unconvenient keys
     ACTION_LAYER_TAP_KEY(8, KC_D),                  // FN25 = momentary Layer8 on D key, to use with mouse and navigation keys
+
+    ACTION_LAYER_TAP_KEY(2, KC_V),                  // FN26 = momentary Layer2 on V key, to use with Numpad keys
+    ACTION_LAYER_TAP_KEY(3, KC_X),                  // FN27 = momentary Layer3 on X key, to use with F* keys
+    ACTION_LAYER_TAP_KEY(4, KC_Z),                  // FN28 = momentary Layer4 on Z key, to use with unconvenient keys
+    ACTION_LAYER_TAP_KEY(8, KC_C),                  // FN29 = momentary Layer8 on C key, to use with mouse and navigation keys
 };
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
