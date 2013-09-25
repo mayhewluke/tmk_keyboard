@@ -94,8 +94,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         ESC, 1,   2,   3,   4,   5,   BSLS,
         GRV, Q,   W,   E,   R,   T,   FN20,
-        FN11,FN23,FN24,FN25,FN26,G,
-        LCTL,FN27,FN28,FN29,FN30,B,   FN16,
+        FN11,FN27,FN28,FN29,FN30,G,
+        LCTL,FN23,FN24,FN25,FN26,B,   FN16,
         FN20,FN19,CAPS,FN12,FN13,
                                       FN18,HOME,
                                            END,
@@ -377,15 +377,16 @@ static const uint16_t PROGMEM fn_actions[] = {
     ACTION_LAYER_MOMENTARY(6),                      // FN21 - momentary Layer6, to use with F* keys on top row, cursor, Teensy, Workman-layer switch
     ACTION_LAYER_MOMENTARY(7),                      // FN22 - momentary Layer7, to use with F* keys (F1-F24)
 
-    ACTION_LAYER_TAP_KEY(4, KC_A),                  // FN23 = momentary Layer4 on A key, to use with unconvenient keys
-    ACTION_LAYER_TAP_KEY(3, KC_S),                  // FN24 = momentary Layer3 on S key, to use with F* keys
-    ACTION_LAYER_TAP_KEY(8, KC_D),                  // FN25 = momentary Layer8 on D key, to use with mouse and navigation keys
-    ACTION_LAYER_TAP_KEY(2, KC_F),                  // FN26 = momentary Layer2 on F key, to use with Numpad keys
+    ACTION_LAYER_TAP_KEY(4, KC_Z),                  // FN23 = momentary Layer4 on Z key, to use with unconvenient keys
+    ACTION_LAYER_TAP_KEY(3, KC_X),                  // FN24 = momentary Layer3 on X key, to use with F* keys
+    ACTION_LAYER_TAP_KEY(8, KC_C),                  // FN25 = momentary Layer8 on C key, to use with mouse and navigation keys
+    ACTION_LAYER_TAP_KEY(2, KC_V),                  // FN26 = momentary Layer2 on V key, to use with Numpad keys
 
-    ACTION_LAYER_TAP_KEY(4, KC_Z),                  // FN27 = momentary Layer4 on Z key, to use with unconvenient keys
-    ACTION_LAYER_TAP_KEY(3, KC_X),                  // FN28 = momentary Layer3 on X key, to use with F* keys
-    ACTION_LAYER_TAP_KEY(8, KC_C),                  // FN29 = momentary Layer8 on C key, to use with mouse and navigation keys
-    ACTION_LAYER_TAP_KEY(2, KC_V),                  // FN30 = momentary Layer2 on V key, to use with Numpad keys
+    // i'd like to remove this - will try to get used to live without this and convert them to usual keys
+    ACTION_LAYER_TAP_KEY(4, KC_A),                  // FN27 = momentary Layer4 on A key, to use with unconvenient keys
+    ACTION_LAYER_TAP_KEY(3, KC_S),                  // FN28 = momentary Layer3 on S key, to use with F* keys
+    ACTION_LAYER_TAP_KEY(8, KC_D),                  // FN29 = momentary Layer8 on D key, to use with mouse and navigation keys
+    ACTION_LAYER_TAP_KEY(2, KC_F),                  // FN30 = momentary Layer2 on F key, to use with Numpad keys
 };
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
