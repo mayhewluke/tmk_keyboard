@@ -3,9 +3,9 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * Keymap: Default Layer in QWERTY
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * |  Esc   |   1  |   2  |   3  |   4  |   5  |   \  |           |   -  |   6  |   7  |   8  |   9  |   0  |   =    |
+     * |   ~    |   1  |   2  |   3  |   4  |   5  |   \  |           |   -  |   6  |   7  |   8  |   9  |   0  |   =    |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |   ~    |   Q  |   W  |   E  |   R  |   T  | ~L5  |           | ~L6  |   Y  |   U  |   I  |   O  |   P  |   [    |
+     * | Tab    |   Q  |   W  |   E  |   R  |   T  | ~L5  |           | ~L6  |   Y  |   U  |   I  |   O  |   P  |   [    |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
      * | Tab/Shf|   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |   '    |
      * |--------+------+------+------+------+------|  L0  |           | ~L7  |------+------+------+------+------+--------|
@@ -49,9 +49,9 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * Keymap: Default Layer in Workman
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * |  Esc   |   ;  |   !  |   #  |   {  |   }  |   '  |           |   ^  |   [  |   ]  |   *  |   (  |   )  |   =    |
+     * |  ~     |   ;  |   !  |   #  |   {  |   }  |   '  |           |   ^  |   [  |   ]  |   *  |   (  |   )  |   =    |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |  ~     |   Q  |   D  |   R  |   W  |   B  | ~L5  |           | ~L6  |   J  |   F  |   U  |   P  |   $  |   :    |
+     * | Tab    |   Q  |   D  |   R  |   W  |   B  | ~L5  |           | ~L6  |   J  |   F  |   U  |   P  |   $  |   :    |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
      * | Tab/Shf|   A  |   S  |   H  |   T  |   G  |------|           |------|   Y  |   N  |   E  |   O  |   I  |   -    |
      * |--------+------+------+------+------+------|  L0  |           | ~L7  |------+------+------+------+------+--------|
@@ -70,9 +70,9 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * Keymap: Default Layer in Workman / with Shift
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * |  Esc   |   1  |   2  |   3  |   4  |   5  |   "  |           |   \  |   6  |   7  |   8  |   9  |   0  |   +    |
+     * |  ~     |   1  |   2  |   3  |   4  |   5  |   "  |           |   \  |   6  |   7  |   8  |   9  |   0  |   +    |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |   `    |   Q  |   D  |   R  |   W  |   B  | ~L5  |           | ~L6  |   J  |   F  |   U  |   P  |   @  |   %    |
+     * | Tab    |   Q  |   D  |   R  |   W  |   B  | ~L5  |           | ~L6  |   J  |   F  |   U  |   P  |   @  |   %    |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
      * | Tab/Shf|   A  |   S  |   H  |   T  |   G  |------|           |------|   Y  |   N  |   E  |   O  |   I  |   _    |
      * |--------+------+------+------+------+------|  L0  |           | ~L7  |------+------+------+------+------+--------|
@@ -92,20 +92,20 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KEYMAP(  // Layer0: default, leftled:none
         // left hand
-        ESC, 1,   2,   3,   4,   5,   BSLS,
-        GRV, Q,   W,   E,   R,   T,   FN20,
-        FN11,FN27,FN28,FN29,FN30,G,
-        LCTL,FN23,FN24,FN25,FN26,B,   FN16,
-        FN20,FN19,CAPS,FN12,FN13,
-                                      FN18,HOME,
+        GRV, 1,   2,   3,   4,   5,   BSLS,
+        TAB, Q,   W,   E,   R,   T,   FN21,
+        FN11,FN28,FN29,FN30,FN31,G,
+        FN12,FN24,FN25,FN26,FN27,B,   FN17,
+        FN21,FN20,CAPS,FN13,FN14,
+                                      FN19,HOME,
                                            END,
                                  FN5, FN6, FN7,
         // right hand
              MINS,6,   7,   8,   9,   0,   EQL,
-             FN21,Y,   U,   I,   O,   P,   LBRC,
-                  H,   J,   K,   L,   SCLN,FN14,
-             FN22,N,   M,   COMM,DOT, SLSH,FN15,
-                       LEFT,UP,  DOWN,RGHT,FN21,
+             FN22,Y,   U,   I,   O,   P,   LBRC,
+                  H,   J,   K,   L,   SCLN,FN15,
+             FN23,N,   M,   COMM,DOT, SLSH,FN16,
+                       LEFT,UP,  DOWN,RGHT,FN22,
         PGUP,DEL,
         PGDN,
         FN8, FN9, FN10
@@ -230,7 +230,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         FN0, NO,  PGUP,UP,  PGDN,PGUP,TRNS,
         TRNS,NO,  LEFT,DOWN,RGHT,PGDN,
         TRNS,INS, DEL, END, HOME,NO,  TRNS,
-        FN17,TRNS,TRNS,TRNS,TRNS,
+        FN18,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
                                            TRNS,
                                  TRNS,TRNS,TRNS,
@@ -363,30 +363,31 @@ static const uint16_t PROGMEM fn_actions[] = {
     ACTION_MODS_TAP_KEY(MOD_RCTL, KC_SPC),          // FN10 = RCtrl  with tap Space
 
     ACTION_MODS_TAP_KEY(MOD_LSFT, KC_TAB),          // FN11 = LShift with tap Tab
-    ACTION_MODS_TAP_KEY(MOD_LALT, KC_SPC),          // FN12 = LAlt   with tap Space
-    ACTION_MODS_TAP_KEY(MOD_LGUI, KC_ESC),          // FN13 = LGui   with tap Escape
-    ACTION_MODS_TAP_KEY(MOD_RSFT, KC_QUOT),         // FN14 = RShift with tap quotes
-    ACTION_MODS_TAP_KEY(MOD_RCTL, KC_RBRC),         // FN15 = RCtrl  with tap ]
+    ACTION_MODS_TAP_KEY(MOD_LCTL, KC_GRV),          // FN12 = LCtrl  with tap Tilda
+    ACTION_MODS_TAP_KEY(MOD_LALT, KC_SPC),          // FN13 = LAlt   with tap Space
+    ACTION_MODS_TAP_KEY(MOD_LGUI, KC_ESC),          // FN14 = LGui   with tap Escape
+    ACTION_MODS_TAP_KEY(MOD_RSFT, KC_QUOT),         // FN15 = RShift with tap quotes
+    ACTION_MODS_TAP_KEY(MOD_RCTL, KC_RBRC),         // FN16 = RCtrl  with tap ]
 
-    ACTION_LAYER_SET(0, ON_BOTH),                   // FN16 - set Layer0
-    ACTION_LAYER_SET(1, ON_BOTH),                   // FN17 - set Layer1, to use Workman layout at firmware level
-    ACTION_LAYER_SET(2, ON_BOTH),                   // FN18 - set Layer2, to use with Numpad keys
+    ACTION_LAYER_SET(0, ON_BOTH),                   // FN17 - set Layer0
+    ACTION_LAYER_SET(1, ON_BOTH),                   // FN18 - set Layer1, to use Workman layout at firmware level
+    ACTION_LAYER_SET(2, ON_BOTH),                   // FN19 - set Layer2, to use with Numpad keys
 
-    ACTION_LAYER_MOMENTARY(2),                      // FN19 - momentary Layer2, to use with Numpad keys
-    ACTION_LAYER_MOMENTARY(5),                      // FN20 - momentary Layer5, to use with F* keys on top row
-    ACTION_LAYER_MOMENTARY(6),                      // FN21 - momentary Layer6, to use with F* keys on top row, cursor, Teensy, Workman-layer switch
-    ACTION_LAYER_MOMENTARY(7),                      // FN22 - momentary Layer7, to use with F* keys (F1-F24)
+    ACTION_LAYER_MOMENTARY(2),                      // FN20 - momentary Layer2, to use with Numpad keys
+    ACTION_LAYER_MOMENTARY(5),                      // FN21 - momentary Layer5, to use with F* keys on top row
+    ACTION_LAYER_MOMENTARY(6),                      // FN22 - momentary Layer6, to use with F* keys on top row, cursor, Teensy, Workman-layer switch
+    ACTION_LAYER_MOMENTARY(7),                      // FN23 - momentary Layer7, to use with F* keys (F1-F24)
 
-    ACTION_LAYER_TAP_KEY(4, KC_Z),                  // FN23 = momentary Layer4 on Z key, to use with unconvenient keys
-    ACTION_LAYER_TAP_KEY(3, KC_X),                  // FN24 = momentary Layer3 on X key, to use with F* keys
-    ACTION_LAYER_TAP_KEY(8, KC_C),                  // FN25 = momentary Layer8 on C key, to use with mouse and navigation keys
-    ACTION_LAYER_TAP_KEY(2, KC_V),                  // FN26 = momentary Layer2 on V key, to use with Numpad keys
+    ACTION_LAYER_TAP_KEY(4, KC_Z),                  // FN24 = momentary Layer4 on Z key, to use with unconvenient keys
+    ACTION_LAYER_TAP_KEY(3, KC_X),                  // FN25 = momentary Layer3 on X key, to use with F* keys
+    ACTION_LAYER_TAP_KEY(8, KC_C),                  // FN26 = momentary Layer8 on C key, to use with mouse and navigation keys
+    ACTION_LAYER_TAP_KEY(2, KC_V),                  // FN27 = momentary Layer2 on V key, to use with Numpad keys
 
     // i'd like to remove this - will try to get used to live without this and convert them to usual keys
-    ACTION_LAYER_TAP_KEY(4, KC_A),                  // FN27 = momentary Layer4 on A key, to use with unconvenient keys
-    ACTION_LAYER_TAP_KEY(3, KC_S),                  // FN28 = momentary Layer3 on S key, to use with F* keys
-    ACTION_LAYER_TAP_KEY(8, KC_D),                  // FN29 = momentary Layer8 on D key, to use with mouse and navigation keys
-    ACTION_LAYER_TAP_KEY(2, KC_F),                  // FN30 = momentary Layer2 on F key, to use with Numpad keys
+    ACTION_LAYER_TAP_KEY(4, KC_A),                  // FN28 = momentary Layer4 on A key, to use with unconvenient keys
+    ACTION_LAYER_TAP_KEY(3, KC_S),                  // FN29 = momentary Layer3 on S key, to use with F* keys
+    ACTION_LAYER_TAP_KEY(8, KC_D),                  // FN30 = momentary Layer8 on D key, to use with mouse and navigation keys
+    ACTION_LAYER_TAP_KEY(2, KC_F),                  // FN31 = momentary Layer2 on F key, to use with Numpad keys
 };
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
