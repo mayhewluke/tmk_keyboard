@@ -356,8 +356,8 @@ static const uint16_t PROGMEM fn_actions[] = {
     ACTION_MODS_KEY(MOD_LSFT, KC_DOT),              // FN4  = Shifted dot       // > in Workman
 
     ACTION_MODS_TAP_KEY(MOD_LCTL, KC_BSPC),         // FN5  = LShift with tap BackSpace
-    ACTION_MODS_TAP_KEY(MOD_LSFT, KC_ESC),          // FN6  = LCtrl  with tap Escape
-    ACTION_MODS_TAP_KEY(MOD_LALT, KC_DEL),          // FN7  = LAlt   with tap Delete
+    ACTION_MODS_TAP_KEY(MOD_LSFT, KC_DEL),          // FN6  = LCtrl  with tap Delete
+    ACTION_MODS_TAP_KEY(MOD_LALT, KC_ESC),          // FN7  = LAlt   with tap Escape
     ACTION_MODS_TAP_KEY(MOD_RALT, KC_INS),          // FN8  = RAlt   with tap Ins
     ACTION_MODS_TAP_KEY(MOD_RSFT, KC_ENT),          // FN9  = RShift with tap Enter
     ACTION_MODS_TAP_KEY(MOD_RCTL, KC_SPC),          // FN10 = RCtrl  with tap Space
@@ -375,7 +375,7 @@ static const uint16_t PROGMEM fn_actions[] = {
 
     ACTION_LAYER_MOMENTARY(2),                      // FN20 - momentary Layer2, to use with Numpad keys
     ACTION_LAYER_MOMENTARY(5),                      // FN21 - momentary Layer5, to use with F* keys on top row
-    ACTION_LAYER_MOMENTARY(6),                      // FN22 - momentary Layer6, to use with F* keys on top row, cursor, Teensy, Workman-layer switch
+    ACTION_LAYER_TAP_KEY(6, KC_ENT),                // FN22 - momentary Layer6 on Enter, to use with F* keys on top row, cursor, Teensy, Workman-layer switch
     ACTION_LAYER_MOMENTARY(7),                      // FN23 - momentary Layer7, to use with F* keys (F1-F24)
 
     ACTION_LAYER_TAP_KEY(4, KC_Z),                  // FN24 = momentary Layer4 on Z key, to use with unconvenient keys
