@@ -71,6 +71,7 @@ void matrix_init(void)
     // initialize row and col
     init_ergodox();
     mcp23018_status = init_mcp23018();
+    ergodox_blink_all_leds();
     unselect_rows();
     init_cols();
 

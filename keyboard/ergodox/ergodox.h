@@ -46,6 +46,7 @@ Most used files are located at
 #define OLATB           0x15
 
 void init_ergodox(void);
+void ergodox_blink_all_leds(void);
 uint8_t init_mcp23018(void);
 uint8_t ergodox_left_leds_update(void);
 

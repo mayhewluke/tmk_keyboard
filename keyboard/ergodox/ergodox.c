@@ -62,8 +62,10 @@ void init_ergodox(void)
     PORTC |=  (1<<7);
     PORTD |=  (1<<7 | 1<<5 | 1<<4);
     PORTE |=  (1<<6);
+}
 
-    // blink leds
+void ergodox_blink_all_leds(void)
+{
     ergodox_led_all_off();
     ergodox_led_all_set(LED_BRIGHTNESS_HI);
     ergodox_led_all_on();
