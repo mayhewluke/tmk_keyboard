@@ -47,7 +47,7 @@ static void init_cols(void);
 static void unselect_rows();
 static void select_row(uint8_t row);
 
-static uint8_t mcp23018_status;
+static uint8_t mcp23018_reset_loop;
 
 #ifdef DEBUG_MATRIX_FREQ
 uint32_t matrix_timer;
@@ -89,6 +89,21 @@ void matrix_init(void)
 
 uint8_t matrix_scan(void)
 {
+    if (mcp23018_status) { // if there was an error
+        if (++mcp23018_reset_loop == 0) {
+            // since mcp23018_reset_loop is 8 bit - we'll try to reset once in 255 matrix scans
+            // this will be approx bit more frequent than once per second
+            print("trying to reset mcp23018\n");
+            mcp23018_status = init_mcp23018();
+            if (mcp23018_status) {
+                print("left side not responding\n");
+            } else {
+                print("left side attached\n");
+                ergodox_blink_all_leds();
+            }
+        }
+    }
+
 #ifdef DEBUG_MATRIX_FREQ
     matrix_scan_count++;
 
