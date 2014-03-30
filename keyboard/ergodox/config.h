@@ -60,6 +60,7 @@ Project located at <https://github.com/benblazak/ergodox-firmware>
 
 /* key combination for command */
 #define IS_COMMAND() ( \
+    keyboard_report->mods == (MOD_BIT(KC_LCTL) | MOD_BIT(KC_RCTL)) || \
     keyboard_report->mods == (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) \
 )
 
