@@ -93,7 +93,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(  // Layer0: default, leftled:none
         // left hand
         GRV, 1,   2,   3,   4,   5,   BSLS,
-        TAB, Q,   W,   E,   R,   T,   NO,
+        TAB, Q,   W,   E,   R,   T,   FN23,
         FN11,FN28,FN29,FN30,FN31,G,
         FN12,FN24,FN25,FN26,FN27,B,   HOME,
         FN21,FN20,CAPS,FN13,FN14,
@@ -132,7 +132,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,TRNS,TRNS
     ),
 
-    KEYMAP(  // Layer2: numpad, leftled:blue
+    KEYMAP(  // Layer2: numpad, leftled:mid/blue
         // left hand
         TRNS,NO,  NO,  NO,  NO,  PAUS,PSCR,
         TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
@@ -153,7 +153,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,TRNS,TRNS
     ),
 
-    KEYMAP(  // Layer3: F-keys + PgUp/PgDn on right hand, leftled:green
+    KEYMAP(  // Layer3: F-keys + PgUp/PgDn on right hand, leftled:bot/green
         // left hand
         TRNS,NO,  NO,  NO,  NO,  NO,  NO,
         TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
@@ -174,7 +174,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,RSFT,RCTL
     ),
 
-    KEYMAP(  // Layer4: unconvenient keys on right hand, leftled:red
+    KEYMAP(  // Layer4: unconvenient keys on right hand, leftled:top/white
         // left hand
         TRNS,NO,  NO,  NO,  NO,  NO,  NO,
         TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
@@ -203,7 +203,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,TRNS,TRNS
     ),
 
-    KEYMAP(  // Layer5: F-keys instead of numbers, leftled:red
+    KEYMAP(  // Layer5: F-keys instead of numbers, leftled:top/white
         // left hand
         TRNS,F1,  F2,  F3,  F4,  F5,  F6,
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
@@ -224,7 +224,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,TRNS,TRNS
     ),
 
-    KEYMAP(  // Layer6: F-keys, cursor, Workman-layer switch, Teensy, leftled:red+onboard
+    KEYMAP(  // Layer6: F-keys, cursor, Workman-layer switch, Teensy, leftled:top/white+onboard
         // left hand
         TRNS,F1,  F2,  F3,  F4,  F5,  F6,
         FN0, NO,  PGUP,UP,  PGDN,PGUP,TRNS,
@@ -249,7 +249,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // rarely used
     //
 
-    KEYMAP(  // Layer7: F-keys only, leftled:red
+    KEYMAP(  // Layer7: F-keys only, leftled:top/white
         // left hand
         TRNS,NO,  NO,  NO,  NO,  NO,  NO,
         TRNS,F13, F14, F15, F16, NO,  TRNS,
@@ -270,7 +270,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,TRNS,TRNS
     ),
 
-    KEYMAP(  // Layer8: mouse and navigation, leftled:blue and green
+    KEYMAP(  // Layer8: mouse and navigation, leftled:mid/blue+bot/green
         // left hand
         TRNS,NO,  NO,  NO,  NO,  NO,  NO,
         TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
@@ -376,7 +376,7 @@ static const uint16_t PROGMEM fn_actions[] = {
     ACTION_LAYER_MOMENTARY(2),                      // FN20 - momentary Layer2, to use with Numpad keys
     ACTION_LAYER_TAP_KEY(5, KC_ENT),                // FN21 - momentary Layer5 on Enter, to use with F* keys on top row
     ACTION_LAYER_TAP_KEY(6, KC_ENT),                // FN22 - momentary Layer6 on Enter, to use with F* keys on top row, cursor, Teensy, Workman-layer switch
-    ACTION_LAYER_MOMENTARY(7),                      // FN23 - momentary Layer7, to use with F* keys (F1-F24)
+    ACTION_LAYER_TAP_KEY(7, KC_BSLS),               // FN23 - momentary Layer7 on ' , to use with F* keys (F1-F24)
 
     ACTION_LAYER_TAP_KEY(4, KC_Z),                  // FN24 = momentary Layer4 on Z key, to use with unconvenient keys
     ACTION_LAYER_TAP_KEY(3, KC_X),                  // FN25 = momentary Layer3 on X key, to use with F* keys
