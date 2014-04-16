@@ -224,21 +224,21 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,TRNS,TRNS
     ),
 
-    KEYMAP(  // Layer6: F-keys, cursor, Workman-layer switch, Teensy, leftled:top/white+onboard
+    KEYMAP(  // Layer6: F-keys, Teensy, Workman-layer switch, leftled:top/white+onboard
         // left hand
         TRNS,F1,  F2,  F3,  F4,  F5,  F6,
-        FN0, NO,  PGUP,UP,  PGDN,PGUP,TRNS,
-        TRNS,NO,  LEFT,DOWN,RGHT,PGDN,
-        TRNS,INS, DEL, END, HOME,NO,  TRNS,
+        FN0, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
         FN18,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
                                            TRNS,
                                  TRNS,TRNS,TRNS,
         // right hand
-             F7,  F8,  F9,  F10, F11, F12, MINS,
-             TRNS,PGUP,PGUP,UP,  PGDN,NO,  FN0,
-                  PGDN,LEFT,DOWN,RGHT,NO,  TRNS,
-             TRNS,NO,  HOME,END, DEL, INS, TRNS,
+             F7,  F8,  F9,  F10, F11, F12, TRNS,
+             TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN0,
+                  TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+             TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
                        TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,
         TRNS,
@@ -342,6 +342,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* id for user defined functions */
 enum function_id {
     TEENSY_KEY,
+    L_CTRL_ALT_ENT,
+    R_CTRL_ALT_ENT,
 };
 
 /*
@@ -374,8 +376,8 @@ static const uint16_t PROGMEM fn_actions[] = {
     [19] =  ACTION_LAYER_SET(2, ON_BOTH),                   // FN19 - set Layer2, to use with Numpad keys
 
     [20] =  ACTION_LAYER_MOMENTARY(2),                      // FN20 - momentary Layer2, to use with Numpad keys
-    [21] =  ACTION_LAYER_TAP_KEY(5, KC_ENT),                // FN21 - momentary Layer5 on Enter, to use with F* keys on top row
-    [22] =  ACTION_LAYER_TAP_KEY(6, KC_ENT),                // FN22 - momentary Layer6 on Enter, to use with F* keys on top row, cursor, Teensy, Workman-layer switch
+    [21] =  ACTION_FUNCTION_TAP(L_CTRL_ALT_ENT),            // FN21 - momentary Layer5+CTRL+ALT on Enter, to use with F* keys on top row
+    [22] =  ACTION_FUNCTION_TAP(R_CTRL_ALT_ENT),            // FN22 - momentary Layer6+CTRL+ALT on Enter, to use with F* keys on top row, Teensy, Workman-layer switch
     [23] =  ACTION_LAYER_TAP_KEY(7, KC_BSLS),               // FN23 - momentary Layer7 on ' , to use with F* keys (F1-F24)
 
     [24] =  ACTION_LAYER_TAP_KEY(4, KC_Z),                  // FN24 = momentary Layer4 on Z key, to use with unconvenient keys
@@ -390,7 +392,7 @@ static const uint16_t PROGMEM fn_actions[] = {
     [31] =  ACTION_LAYER_TAP_KEY(2, KC_F),                  // FN31 = momentary Layer2 on F key, to use with Numpad keys
 };
 
-void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
+void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
     // print("action_function called\n");
     // print("id  = "); phex(id); print("\n");
@@ -402,6 +404,37 @@ void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
         _delay_ms(50);
         bootloader_jump(); // should not return
         print("not supported.\n");
+    }
+
+    if (id == L_CTRL_ALT_ENT || id == R_CTRL_ALT_ENT) {
+        if (record->tap.count == 0 || record->tap.interrupted) {
+            uint8_t weak_mods;
+            uint8_t layer;
+
+            if (id == L_CTRL_ALT_ENT) {
+                weak_mods = MOD_BIT(KC_LCTL) | MOD_BIT(KC_LALT);
+                layer     = 5;
+            } else {
+                weak_mods = MOD_BIT(KC_RCTL) | MOD_BIT(KC_RALT);
+                layer     = 6;
+            }
+
+            if (record->event.pressed) {
+                layer_on(layer);
+                add_weak_mods(weak_mods);
+            } else {
+                del_weak_mods(weak_mods);
+                layer_off(layer);
+            }
+        } else {
+            if (record->event.pressed) {
+                add_key(KC_ENT);
+                send_keyboard_report();
+            } else {
+                del_key(KC_ENT);
+                send_keyboard_report();
+            }
+        }
     }
 }
 
