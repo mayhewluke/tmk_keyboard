@@ -185,12 +185,12 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                            TRNS,
                                  TRNS,TRNS,TRNS,
 
-        // in Workman right hand will be:
-        //              +
-        //    ^ { } ( ) =
-        //    ' ! $ " ; \
-        //    # [ < > ] \
-        //
+        /* in Workman right hand will be:
+                        +
+              ^ { } ( ) =
+              ' ! $ " ; \
+              # [ < > ] \
+        */
 
         // right hand
              NO,  NO,  NO,  NO,  NO,  NO,  PPLS,
