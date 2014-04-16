@@ -392,9 +392,10 @@ static const uint16_t PROGMEM fn_actions[] = {
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
 {
-    print("action_function called\n");
-    print("id  = "); phex(id); print("\n");
-    print("opt = "); phex(opt); print("\n");
+    // print("action_function called\n");
+    // print("id  = "); phex(id); print("\n");
+    // print("opt = "); phex(opt); print("\n");
+
     if (id == TEENSY_KEY) {
         clear_keyboard();
         print("\n\nJump to bootloader... ");
