@@ -145,7 +145,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right hand
              SLCK,NLCK,PSLS,PAST,PAST,PMNS,BSPC,
              TRNS,NO,  P7,  P8,  P9,  PMNS,PGUP,
-                  TRNS,P4,  P5,  P6,  PPLS,PGDN,
+                  NO,  P4,  P5,  P6,  PPLS,PGDN,
              TRNS,NO,  P1,  P2,  P3,  PPLS,PENT,
                        P0,  PDOT,SLSH,PENT,PENT,
         TRNS,TRNS,
@@ -267,7 +267,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,
         TRNS,
-        TRNS,TRNS,TRNS
+        SLEP,TRNS,TRNS
     ),
 
     KEYMAP(  // Layer8: mouse and navigation, leftled:mid/blue+bot/green
