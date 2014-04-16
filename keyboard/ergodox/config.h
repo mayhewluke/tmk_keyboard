@@ -27,7 +27,7 @@ Project located at <https://github.com/benblazak/ergodox-firmware>
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0x1111
+#define PRODUCT_ID      0x1307
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    TMK/Cub
 #define PRODUCT         Ergodox

@@ -13,7 +13,7 @@ case "$1" in
         ;;
     workman)
         variant='wcp,'
-        lsusb | grep -q feed:1112 || variant='wce,'
+        lsusb | grep -qi FEED:1307 && variant='wce,'
         [ -e ~/.force_ergodox ] && variant='wce,'
         [ -e ~/.force_plain   ] && variant='wcp,'
         setxkbmap $opts -layout workman,ru -variant "$variant"
