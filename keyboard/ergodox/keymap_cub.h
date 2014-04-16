@@ -273,9 +273,9 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(  // Layer8: mouse and navigation, leftled:mid/blue+bot/green
         // left hand
         TRNS,NO,  NO,  NO,  NO,  NO,  NO,
-        TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
-        TRNS,NO,  NO,  TRNS,NO,  NO,
-        TRNS,NO,  NO,  TRNS,NO,  NO,  TRNS,
+        TRNS,NO,  NO,  NO,  ACL0,NO,  TRNS,
+        TRNS,NO,  NO,  TRNS,ACL1,NO,
+        TRNS,NO,  NO,  TRNS,ACL2,NO,  TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
                                            TRNS,
