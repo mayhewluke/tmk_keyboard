@@ -218,6 +218,11 @@ uint8_t keymap_key_to_keycode(uint8_t layer, key_t key)
     }
 }
 
+#if defined(KEYMAP_CUB)
+
+// function keymap_fn_to_action will be defined in keymap_cub.h
+
+#else
 /* translates Fn keycode to action */
 action_t keymap_fn_to_action(uint8_t keycode)
 {
@@ -229,4 +234,5 @@ action_t keymap_fn_to_action(uint8_t keycode)
     }
     return action;
 }
+#endif
 

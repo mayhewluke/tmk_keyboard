@@ -251,8 +251,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KEYMAP(  // Layer7: F-keys only, leftled:top/white
         // left hand
-        TRNS,NO,  NO,  NO,  NO,  NO,  NO,
-        TRNS,F13, F14, F15, F16, NO,  TRNS,
+        FN0, NO,  NO,  NO,  NO,  NO,  NO,
+        FN1, F13, F14, F15, F16, NO,  FN23,
         TRNS,F17, F18, F19, F20, NO,
         TRNS,F21, F22, F23, F24, NO,  TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,
@@ -261,7 +261,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  TRNS,TRNS,TRNS,
         // right hand
              NO,  NO,  NO,  NO,  NO,  NO,  TRNS,
-             TRNS,NO,  F1,  F2,  F3,  F4,  TRNS,
+             FN23,NO,  F1,  F2,  F3,  F4,  TRNS,
                   NO,  F5,  F6,  F7,  F8,  TRNS,
              TRNS,NO,  F9,  F10, F11, F12, TRNS,
                        TRNS,TRNS,TRNS,TRNS,TRNS,
@@ -339,12 +339,19 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-/* id for user defined functions */
+/* id for user defined functions & macros */
 enum function_id {
     TEENSY_KEY,
     CUSTOM_KEY,
     L_CTRL_ALT_ENT,
     R_CTRL_ALT_ENT,
+};
+
+enum macro_id {
+    XMONAD_RESET,
+    PASSWORD1,
+    PASSWORD2,
+    PASSWORD3,
 };
 
 /*
@@ -395,6 +402,13 @@ static const uint16_t PROGMEM fn_actions[] = {
     [25] =  ACTION_LAYER_TAP_KEY(3, KC_X),                  // FN25 = momentary Layer3 on X key, to use with F* keys
     [26] =  ACTION_LAYER_TAP_KEY(8, KC_C),                  // FN26 = momentary Layer8 on C key, to use with mouse and navigation keys
     [27] =  ACTION_LAYER_TAP_KEY(2, KC_V),                  // FN27 = momentary Layer2 on V key, to use with Numpad keys
+};
+
+static const uint16_t PROGMEM fn_actions_7[] = {
+    [0] =   ACTION_MACRO(XMONAD_RESET),                     // FN0  = xmonad-reanimator
+    [1] =   ACTION_MACRO(PASSWORD1),                        // FN1  = default password
+    [2] =   ACTION_MACRO(PASSWORD1),                        // FN2  = other password
+    [3] =   ACTION_MACRO(PASSWORD1),                        // FN3  = mega password
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
@@ -480,5 +494,44 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
     }
 */
 
+}
+
+#include "keymap_passwords.h"
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
+    if (record->event.pressed) {
+        switch (id) {
+            case XMONAD_RESET:  return MACRO_XMONAD_RESET;
+            case PASSWORD1:     return MACRO_PASSWORD1;
+        }
+    }
+    return MACRO_NONE;
+}
+
+#define FN_ACTIONS_SIZE     (sizeof(fn_actions)   / sizeof(fn_actions[0]))
+#define FN_ACTIONS_7_SIZE   (sizeof(fn_actions_7) / sizeof(fn_actions_7[0]))
+
+/*
+ * translates Fn keycode to action
+ * for some layers, use different translation table
+ */
+action_t keymap_fn_to_action(uint8_t keycode)
+{
+    uint8_t layer = biton32(layer_state);
+
+    action_t action;
+    action.code = ACTION_NO;
+
+    if (layer == 7 && FN_INDEX(keycode) < FN_ACTIONS_7_SIZE) {
+        action.code = pgm_read_word(&fn_actions_7[FN_INDEX(keycode)]);
+    }
+
+    // by default, use fn_actions from default layer 0
+    // this is needed to get mapping for same key, that was used switch to some layer,
+    // to have possibility to switch layers back
+    if (action.code == ACTION_NO && FN_INDEX(keycode) < FN_ACTIONS_SIZE) {
+        action.code = pgm_read_word(&fn_actions[FN_INDEX(keycode)]);
+    }
+
+    return action;
 }
 
