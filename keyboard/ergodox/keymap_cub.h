@@ -342,6 +342,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* id for user defined functions */
 enum function_id {
     TEENSY_KEY,
+    CUSTOM_KEY,
     L_CTRL_ALT_ENT,
     R_CTRL_ALT_ENT,
 };
@@ -385,6 +386,9 @@ static const uint16_t PROGMEM fn_actions[] = {
 
     // i'd like to remove this - will try to get used to live without this and convert them to usual keys
     [20] =  ACTION_LAYER_MOMENTARY(2),                      // FN20 - momentary Layer2, to use with Numpad keys
+// or
+//  [20] =  ACTION_FUNCTION_TAP(CUSTOM_KEY),                // FN20 - use custom key, with tapping support
+
     [23] =  ACTION_LAYER_TAP_KEY(7, KC_BSLS),               // FN23 - momentary Layer7 on ' , to use with F* keys (F1-F24)
 
     [24] =  ACTION_LAYER_TAP_KEY(4, KC_Z),                  // FN24 = momentary Layer4 on Z key, to use with unconvenient keys
@@ -437,5 +441,44 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
             }
         }
     }
+
+
+/*
+ * just an example of custom key implementation
+ * not really needed with custom keymap_fn_to_action(),
+ * because it will allow you to have 32 FN** keys on EACH layer
+ */
+
+/*
+    keyevent_t event = record->event;
+
+    if (id == CUSTOM_KEY) {
+        uint8_t layer = biton32(layer_state);
+        uint8_t col = event.key.col;
+        uint8_t row = event.key.row;
+        uint8_t handled = 0;
+
+        if (event.pressed) {
+            if (layer == XXX && col == XXX && row == XXX) {
+                    action_macro_play(
+                        MACRO(
+                            ...........
+                        END)
+                    );
+                    handled++;
+                }
+            }
+        }
+
+        if (!handled) {
+            print("custom key not handled");
+            print(": layer "); pdec(layer);
+            print(", col "); pdec(col);
+            print(", row "); pdec(row);
+            print("\n");
+        }
+    }
+*/
+
 }
 
