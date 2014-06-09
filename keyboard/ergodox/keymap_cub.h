@@ -93,7 +93,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(  // Layer0: default, leftled:none
         // left hand
         GRV, 1,   2,   3,   4,   5,   BSLS,
-        TAB, Q,   W,   E,   R,   T,   FN23,
+        FN2, Q,   W,   E,   R,   T,   FN23,
         FN11,FN28,FN29,FN30,FN31,G,
         FN12,FN24,FN25,FN26,FN27,B,   HOME,
         FN21,FN20,CAPS,FN13,FN14,
@@ -186,15 +186,15 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  TRNS,TRNS,TRNS,
 
         /* in Workman right hand will be:
-                        +
-              ^ { } ( ) =
+                { } ( ) +
+              ^ ! ?     =
               ' ! $ " ; \
               # [ < > ] \
         */
 
         // right hand
-             NO,  NO,  NO,  NO,  NO,  NO,  PPLS,
-             TRNS,MINS,4,   5,   9,   0,   EQL,
+             NO,  NO,  4,   5,   9,   0,   PPLS,
+             TRNS,MINS,2,   FN5, 9,   0,   EQL,
                   BSLS,2,   P,   FN1, 1,   FN2,
              TRNS,3,   6,   FN3, FN4, 7,   FN2,
                        TRNS,TRNS,TRNS,TRNS,TRNS,
@@ -404,6 +404,14 @@ static const uint16_t PROGMEM fn_actions[] = {
     [27] =  ACTION_LAYER_TAP_KEY(2, KC_V),                  // FN27 = momentary Layer2 on V key, to use with Numpad keys
 };
 
+static const uint16_t PROGMEM fn_actions_4[] = {
+    [1] =   ACTION_MODS_KEY(MOD_LSFT, KC_BSLS),             // FN1  = Shifted BackSlash // " in Workman
+    [2] =   ACTION_MODS_KEY(MOD_LSFT, KC_MINS),             // FN2  = Shifted Minus     // \ in Workman
+    [3] =   ACTION_MODS_KEY(MOD_LSFT, KC_COMM),             // FN3  = Shifted comma     // < in Workman
+    [4] =   ACTION_MODS_KEY(MOD_LSFT, KC_DOT),              // FN4  = Shifted dot       // > in Workman
+    [5] =   ACTION_MODS_KEY(MOD_LSFT, KC_SLSH),             // FN5  = Shifted slash     // ? in Workman
+};
+
 static const uint16_t PROGMEM fn_actions_7[] = {
     [0] =   ACTION_MACRO(XMONAD_RESET),                     // FN0  = xmonad-reanimator
     [1] =   ACTION_MACRO(PASSWORD1),                        // FN1  = default password
@@ -508,6 +516,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
 }
 
 #define FN_ACTIONS_SIZE     (sizeof(fn_actions)   / sizeof(fn_actions[0]))
+#define FN_ACTIONS_4_SIZE   (sizeof(fn_actions_4) / sizeof(fn_actions_4[0]))
 #define FN_ACTIONS_7_SIZE   (sizeof(fn_actions_7) / sizeof(fn_actions_7[0]))
 
 /*
@@ -520,6 +529,10 @@ action_t keymap_fn_to_action(uint8_t keycode)
 
     action_t action;
     action.code = ACTION_NO;
+
+    if (layer == 4 && FN_INDEX(keycode) < FN_ACTIONS_4_SIZE) {
+        action.code = pgm_read_word(&fn_actions_4[FN_INDEX(keycode)]);
+    }
 
     if (layer == 7 && FN_INDEX(keycode) < FN_ACTIONS_7_SIZE) {
         action.code = pgm_read_word(&fn_actions_7[FN_INDEX(keycode)]);
