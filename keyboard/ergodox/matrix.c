@@ -150,8 +150,13 @@ uint8_t matrix_scan(void)
         case 4:
         case 5:
         case 7:
-            // red
+            // white
             ergodox_left_led_1_on();
+            break;
+        case 9:
+            // white+green
+            ergodox_left_led_1_on();
+            ergodox_left_led_3_on();
             break;
         default:
             // none

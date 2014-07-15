@@ -252,7 +252,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(  // Layer7: F-keys only, leftled:top/white
         // left hand
         FN0, NO,  NO,  NO,  NO,  NO,  NO,
-        FN1, F13, F14, F15, F16, NO,  FN23,
+        FN1, F13, F14, F15, F16, NO,  TRNS,
         TRNS,F17, F18, F19, F20, NO,
         TRNS,F21, F22, F23, F24, NO,  TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,
@@ -261,7 +261,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  TRNS,TRNS,TRNS,
         // right hand
              NO,  NO,  NO,  NO,  NO,  NO,  TRNS,
-             FN23,NO,  F1,  F2,  F3,  F4,  TRNS,
+             TRNS,NO,  F1,  F2,  F3,  F4,  TRNS,
                   NO,  F5,  F6,  F7,  F8,  TRNS,
              TRNS,NO,  F9,  F10, F11, F12, TRNS,
                        TRNS,TRNS,TRNS,TRNS,TRNS,
@@ -286,6 +286,27 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              F14, BTN2,WH_L,WH_U,WH_D,WH_R,PGUP,
                   BTN1,MS_L,MS_U,MS_D,MS_R,PGDN,
              F15, BTN3,HOME,END, DEL, INS, NO,
+                       TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,
+        TRNS,
+        TRNS,TRNS,TRNS
+    ),
+
+    KEYMAP(  // Layer9: application-specific shortcuts (mostly browser), leftled:top/white+bot/green
+        // left hand
+        TRNS,NO,  NO,  NO,  NO,  NO,  NO,
+        TRNS,NO,  NO,  NO,  NO,  NO,  TRNS,
+        TRNS,NO,  NO,  NO,  NO,  NO,
+        TRNS,NO,  NO,  NO,  TRNS,NO,  TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,
+                                      TRNS,TRNS,
+                                           TRNS,
+                                 TRNS,TRNS,TRNS,
+        // right hand
+             NO,  NO,  NO,  NO,  NO,  NO,  TRNS,
+             TRNS,NO,  FN12,FN13,NO,  NO,  FN10,
+                  FN1, FN2, FN3, FN4, FN5, FN11,
+             TRNS,FN6, FN7, FN8, FN9, FN0, TRNS,
                        TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,
         TRNS,
@@ -401,22 +422,39 @@ static const uint16_t PROGMEM fn_actions[] = {
     [24] =  ACTION_LAYER_TAP_KEY(4, KC_Z),                  // FN24 = momentary Layer4 on Z key, to use with unconvenient keys
     [25] =  ACTION_LAYER_TAP_KEY(3, KC_X),                  // FN25 = momentary Layer3 on X key, to use with F* keys
     [26] =  ACTION_LAYER_TAP_KEY(8, KC_C),                  // FN26 = momentary Layer8 on C key, to use with mouse and navigation keys
-    [27] =  ACTION_LAYER_TAP_KEY(2, KC_V),                  // FN27 = momentary Layer2 on V key, to use with Numpad keys
+    [27] =  ACTION_LAYER_TAP_KEY(9, KC_V),                  // FN27 = momentary Layer9 on V key, to use with application-specific shortcuts
 };
 
 static const uint16_t PROGMEM fn_actions_4[] = {
-    [1] =   ACTION_MODS_KEY(MOD_LSFT, KC_BSLS),             // FN1  = Shifted BackSlash // " in Workman
-    [2] =   ACTION_MODS_KEY(MOD_LSFT, KC_MINS),             // FN2  = Shifted Minus     // \ in Workman
-    [3] =   ACTION_MODS_KEY(MOD_LSFT, KC_COMM),             // FN3  = Shifted comma     // < in Workman
-    [4] =   ACTION_MODS_KEY(MOD_LSFT, KC_DOT),              // FN4  = Shifted dot       // > in Workman
-    [5] =   ACTION_MODS_KEY(MOD_LSFT, KC_SLSH),             // FN5  = Shifted slash     // ? in Workman
+    [1]  =  ACTION_MODS_KEY(MOD_LSFT, KC_BSLS),             // FN1  = Shifted BackSlash // " in Workman
+    [2]  =  ACTION_MODS_KEY(MOD_LSFT, KC_MINS),             // FN2  = Shifted Minus     // \ in Workman
+    [3]  =  ACTION_MODS_KEY(MOD_LSFT, KC_COMM),             // FN3  = Shifted comma     // < in Workman
+    [4]  =  ACTION_MODS_KEY(MOD_LSFT, KC_DOT),              // FN4  = Shifted dot       // > in Workman
+    [5]  =  ACTION_MODS_KEY(MOD_LSFT, KC_SLSH),             // FN5  = Shifted slash     // ? in Workman
 };
 
 static const uint16_t PROGMEM fn_actions_7[] = {
-    [0] =   ACTION_MACRO(XMONAD_RESET),                     // FN0  = xmonad-reanimator
-    [1] =   ACTION_MACRO(PASSWORD1),                        // FN1  = default password
-    [2] =   ACTION_MACRO(PASSWORD1),                        // FN2  = other password
-    [3] =   ACTION_MACRO(PASSWORD1),                        // FN3  = mega password
+    [0]  =  ACTION_MACRO(XMONAD_RESET),                     // FN0  = xmonad-reanimator
+    [1]  =  ACTION_MACRO(PASSWORD1),                        // FN1  = default password
+    [2]  =  ACTION_MACRO(PASSWORD1),                        // FN2  = other password
+    [3]  =  ACTION_MACRO(PASSWORD1),                        // FN3  = mega password
+};
+
+static const uint16_t PROGMEM fn_actions_9[] = {
+    [0]  =  ACTION_MODS_KEY(MOD_LALT, KC_P0),               // FN0  = Alt+0
+    [1]  =  ACTION_MODS_KEY(MOD_LALT, KC_P1),               // FN1  = Alt+1
+    [2]  =  ACTION_MODS_KEY(MOD_LALT, KC_P2),               // FN2  = Alt+2
+    [3]  =  ACTION_MODS_KEY(MOD_LALT, KC_P3),               // FN3  = Alt+3
+    [4]  =  ACTION_MODS_KEY(MOD_LALT, KC_P4),               // FN4  = Alt+4
+    [5]  =  ACTION_MODS_KEY(MOD_LALT, KC_P5),               // FN5  = Alt+5
+    [6]  =  ACTION_MODS_KEY(MOD_LALT, KC_P6),               // FN6  = Alt+6
+    [7]  =  ACTION_MODS_KEY(MOD_LALT, KC_P7),               // FN7  = Alt+7
+    [8]  =  ACTION_MODS_KEY(MOD_LALT, KC_P8),               // FN8  = Alt+8
+    [9]  =  ACTION_MODS_KEY(MOD_LALT, KC_P9),               // FN9  = Alt+9
+    [10] =  ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_TAB),     // FN10 = Ctrl+Shift+Tab
+    [11] =  ACTION_MODS_KEY(MOD_LCTL,          KC_TAB),     // FN11 = Ctrl+Tab
+    [12] =  ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_PGUP),    // FN12 = Ctrl+Shift+PgUp
+    [13] =  ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_PGDN),    // FN13 = Ctrl+Shift+PgDn
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
@@ -518,6 +556,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
 #define FN_ACTIONS_SIZE     (sizeof(fn_actions)   / sizeof(fn_actions[0]))
 #define FN_ACTIONS_4_SIZE   (sizeof(fn_actions_4) / sizeof(fn_actions_4[0]))
 #define FN_ACTIONS_7_SIZE   (sizeof(fn_actions_7) / sizeof(fn_actions_7[0]))
+#define FN_ACTIONS_9_SIZE   (sizeof(fn_actions_9) / sizeof(fn_actions_9[0]))
 
 /*
  * translates Fn keycode to action
@@ -536,6 +575,10 @@ action_t keymap_fn_to_action(uint8_t keycode)
 
     if (layer == 7 && FN_INDEX(keycode) < FN_ACTIONS_7_SIZE) {
         action.code = pgm_read_word(&fn_actions_7[FN_INDEX(keycode)]);
+    }
+
+    if (layer == 9 && FN_INDEX(keycode) < FN_ACTIONS_9_SIZE) {
+        action.code = pgm_read_word(&fn_actions_9[FN_INDEX(keycode)]);
     }
 
     // by default, use fn_actions from default layer 0
