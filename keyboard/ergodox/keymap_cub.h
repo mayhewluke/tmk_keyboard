@@ -441,7 +441,7 @@ static const uint16_t PROGMEM fn_actions_7[] = {
 };
 
 static const uint16_t PROGMEM fn_actions_9[] = {
-    [0]  =  ACTION_MODS_KEY(MOD_LALT,          KC_P0),      // FN0  = Alt+0
+    [0]  =  ACTION_MODS_KEY(MOD_LCTL,          KC_P0),      // FN0  = Ctrl+0
     [1]  =  ACTION_MODS_KEY(MOD_LALT,          KC_P1),      // FN1  = Alt+1
     [2]  =  ACTION_MODS_KEY(MOD_LALT,          KC_P2),      // FN2  = Alt+2
     [3]  =  ACTION_MODS_KEY(MOD_LALT,          KC_P3),      // FN3  = Alt+3
