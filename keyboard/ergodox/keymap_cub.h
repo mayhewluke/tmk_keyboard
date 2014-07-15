@@ -304,7 +304,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  TRNS,TRNS,TRNS,
         // right hand
              NO,  NO,  NO,  NO,  NO,  NO,  TRNS,
-             TRNS,NO,  FN12,FN13,NO,  NO,  FN10,
+             TRNS,NO,  FN12,FN13,FN14,FN15,FN10,
                   FN1, FN2, FN3, FN4, FN5, FN11,
              TRNS,FN6, FN7, FN8, FN9, FN0, TRNS,
                        TRNS,TRNS,TRNS,TRNS,TRNS,
@@ -441,20 +441,22 @@ static const uint16_t PROGMEM fn_actions_7[] = {
 };
 
 static const uint16_t PROGMEM fn_actions_9[] = {
-    [0]  =  ACTION_MODS_KEY(MOD_LALT, KC_P0),               // FN0  = Alt+0
-    [1]  =  ACTION_MODS_KEY(MOD_LALT, KC_P1),               // FN1  = Alt+1
-    [2]  =  ACTION_MODS_KEY(MOD_LALT, KC_P2),               // FN2  = Alt+2
-    [3]  =  ACTION_MODS_KEY(MOD_LALT, KC_P3),               // FN3  = Alt+3
-    [4]  =  ACTION_MODS_KEY(MOD_LALT, KC_P4),               // FN4  = Alt+4
-    [5]  =  ACTION_MODS_KEY(MOD_LALT, KC_P5),               // FN5  = Alt+5
-    [6]  =  ACTION_MODS_KEY(MOD_LALT, KC_P6),               // FN6  = Alt+6
-    [7]  =  ACTION_MODS_KEY(MOD_LALT, KC_P7),               // FN7  = Alt+7
-    [8]  =  ACTION_MODS_KEY(MOD_LALT, KC_P8),               // FN8  = Alt+8
-    [9]  =  ACTION_MODS_KEY(MOD_LALT, KC_P9),               // FN9  = Alt+9
+    [0]  =  ACTION_MODS_KEY(MOD_LALT,          KC_P0),      // FN0  = Alt+0
+    [1]  =  ACTION_MODS_KEY(MOD_LALT,          KC_P1),      // FN1  = Alt+1
+    [2]  =  ACTION_MODS_KEY(MOD_LALT,          KC_P2),      // FN2  = Alt+2
+    [3]  =  ACTION_MODS_KEY(MOD_LALT,          KC_P3),      // FN3  = Alt+3
+    [4]  =  ACTION_MODS_KEY(MOD_LALT,          KC_P4),      // FN4  = Alt+4
+    [5]  =  ACTION_MODS_KEY(MOD_LALT,          KC_P5),      // FN5  = Alt+5
+    [6]  =  ACTION_MODS_KEY(MOD_LALT,          KC_P6),      // FN6  = Alt+6
+    [7]  =  ACTION_MODS_KEY(MOD_LALT,          KC_P7),      // FN7  = Alt+7
+    [8]  =  ACTION_MODS_KEY(MOD_LALT,          KC_P8),      // FN8  = Alt+8
+    [9]  =  ACTION_MODS_KEY(MOD_LALT,          KC_P9),      // FN9  = Alt+9
     [10] =  ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_TAB),     // FN10 = Ctrl+Shift+Tab
     [11] =  ACTION_MODS_KEY(MOD_LCTL,          KC_TAB),     // FN11 = Ctrl+Tab
     [12] =  ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_PGUP),    // FN12 = Ctrl+Shift+PgUp
     [13] =  ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_PGDN),    // FN13 = Ctrl+Shift+PgDn
+    [14] =  ACTION_MODS_KEY(MOD_LCTL,          KC_PMNS),    // FN14 = Ctrl+Pad Minus
+    [15] =  ACTION_MODS_KEY(MOD_LCTL,          KC_PPLS),    // FN15 = Ctrl+Pad Plus
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
