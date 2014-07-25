@@ -75,7 +75,6 @@ You can find some keyboard specific projects under `converter` and `keyboard` di
 * [ErgoDox_cub-uanic][cub-uanic]            - Split Ergonomic Keyboard [ErgoDox][ergodox_org]
 * [mcdox][mcdox_tmk]                        - [mcdox][mcdox]
 
-
 [GH_macway]:    http://geekhack.org/showwiki.php?title=Island:11930
 [GH_hhkb]:      http://geekhack.org/showwiki.php?title=Island:12047
 [GH_ps2]:       http://geekhack.org/showwiki.php?title=Island:14618
@@ -87,6 +86,7 @@ You can find some keyboard specific projects under `converter` and `keyboard` di
 [GH_x68k]:      http://geekhack.org/showwiki.php?title=Island:29060
 [GH_hbkb]:      http://geekhack.org/showwiki.php?title=Island:29483
 [GH_ibm4704]:   http://geekhack.org/index.php?topic=54706.0
+[GH_ergodox]:   http://geekhack.org/index.php?topic=48106.0
 [HID_liber]:    http://deskthority.net/wiki/HID_Liberation_Device_-_DIY_Instructions
 [Phantom]:      http://geekhack.org/index.php?topic=26742
 [GH60]:         http://geekhack.org/index.php?topic=34959
