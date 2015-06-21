@@ -82,11 +82,9 @@ void keyboard_init(void)
     adb_mouse_init();
 #endif
 
-
 #ifdef BOOTMAGIC_ENABLE
     bootmagic();
 #endif
-
 #ifdef BACKLIGHT_ENABLE
     backlight_init();
 #endif
