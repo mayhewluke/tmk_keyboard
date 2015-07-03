@@ -169,7 +169,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |---------+-----+-----+-----+------+-----|      |           |      |-------+-------+------+-----+------+--------|
      * |    =+   |  Z  |  X  |  C  |  V   |  B  |      |           |      |   N   |   M   |  ,<  | .>  |  /?  |  FN7   |
      * `---------+-----+-----+-----+------+------------'           `--------------+-------+------+-----+------+--------'
-     *  |        | LGUI|     | LAlt|  L1  |                                       |  L1   | FN5  |     | FN6  |       |
+     *  |        | LGUI|     | LAlt|  L1  |                                       |       | FN5  |     | FN6  |       |
      *  `---------------------------------'                                       `-----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        |      |      |       |      |      |
@@ -189,13 +189,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------| TRNS |           | TRNS |------+------+------+------+------+--------|
      * |  FN9   |  *   |  @   |  {   |  }   |  &   |      |           |      |  :   |  1   |  2   |  3   | FN13 |  FN14  |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   | TRNS | TRNS | TRNS | TRNS | TRNS |                                       | TRNS | TRNS | TRNS | TRNS | TRNS |
+     *   | TRNS | TRNS | TRNS | TRNS | TRNS |                                       |  0   | TRNS | TRNS | TRNS | TRNS |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        |      |Teensy|       |      |      |
      *                                 ,------|------|------|       |------+------+------.
      *                                 |      |      |      |       |      |      |      |
-     *                                 | TRNS | FN10 |------|       |------|  0   | TRNS |
+     *                                 | TRNS | FN10 |------|       |------|      | TRNS |
      *                                 |      |      | FN11 |       | FN12 |      |      |
      *                                 `--------------------'       `--------------------'
      *
@@ -236,7 +236,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               KC_NO,    KC_Y,    KC_U,     KC_I,    KC_O,     KC_P,  KC_TAB,
                         KC_H,    KC_J,     KC_K,    KC_L,  KC_QUOT,  KC_ENT,
               KC_NO,    KC_N,    KC_M,  KC_COMM,  KC_DOT,  KC_SLSH,  KC_FN7,
-                      KC_FN1,  KC_FN5,    KC_NO,  KC_FN6,    KC_NO,
+                       KC_NO,  KC_FN5,    KC_NO,  KC_FN6,    KC_NO,
 
           KC_NO,      KC_NO,
           KC_NO,
@@ -259,11 +259,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_TRNS,   SHIFT(KC_BSLS),    KC_7,    KC_8,    KC_9, SHIFT(KC_6), KC_TRNS,
                                KC_BSLS,    KC_4,    KC_5,    KC_6,   KC_SCOLON, KC_TRNS,
              KC_TRNS, SHIFT(KC_SCOLON),    KC_1,    KC_2,    KC_3,     KC_FN13, KC_FN14,
-                                        KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
+                                           KC_0, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
 
          KC_NO, KC_TRNS,
          KC_NO,
-       KC_FN12,    KC_0, KC_TRNS
+       KC_FN12,   KC_NO, KC_TRNS
     ),
 
     KEYMAP(  // Layer2, left hand
