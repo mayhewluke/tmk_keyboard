@@ -87,10 +87,9 @@ enum function_id {
     TEENSY_KEY,
 };
 
-/*
 enum macro_id {
+  VIM_CLIP_YANK
 };
-*/
 
 /* translates key to keycode */
 uint16_t actionmap_key_to_action(uint8_t layer, keypos_t key)
@@ -132,7 +131,8 @@ const uint16_t PROGMEM fn_actions[] = {
   [0] = ACTION_FUNCTION(TEENSY_KEY),
   [1] = ACTION_LAYER_MOMENTARY(1),  // Activates Layer 1 while held
   [2] = ACTION_LAYER_MOMENTARY(2), // Activates Layer 2 while held
-  [3] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC) // Escape when tapped, Ctrl when held
+  [3] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC), // Escape when tapped, Ctrl when held
+  [4] = ACTION_MACRO(VIM_CLIP_YANK), // "+y - vim yank to clipboard
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
@@ -155,6 +155,21 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
     asm volatile("jmp 0x7E00");
 
     print("not supported.\n");
+  }
+}
+
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
+  keyevent_t event = record->event;
+
+  // doesn’t work – sends no control
+
+  switch (id) {
+    case VIM_CLIP_YANK:
+      return (event.pressed ?
+              MACRO( D(LSHIFT), T(QUOT), T(EQL), U(LSHIFT), T(Y), END) : MACRO_NONE);
+      break;
+    default:
+      return MACRO_NONE;
   }
 }
 
@@ -183,7 +198,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,--------------------------------------------------.           ,--------------------------------------------------.
      * |  TRNS  | TRNS | TRNS | TRNS | TRNS | TRNS | TRNS |           | TRNS | TRNS | TRNS | TRNS | TRNS | TRNS |  TRNS  |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |  TRNS  |  %   |  $   |  |   |  \   |  #   | TRNS |           | TRNS |      |      |      |      |      |  TRNS  |
+     * |  TRNS  |  %   |  $   |  |   |  \   |  #   | TRNS |           | TRNS |      | "+y  |      |      |      |  TRNS  |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
      * |  TRNS  |  ~   |  `   |  ^   |  ;   |      |------|           |------|      |      |      |      |      |  TRNS  |
      * |--------+------+------+------+------+------| TRNS |           | TRNS |------+------+------+------+------+--------|
@@ -256,7 +271,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
         // right hand
              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_TRNS,
+             KC_TRNS,   KC_NO,  KC_FN4,   KC_NO,   KC_NO,   KC_NO, KC_TRNS,
                         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_TRNS,
              KC_TRNS,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_TRNS,
                                KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
