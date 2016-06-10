@@ -18,6 +18,7 @@ in
     installPhase = ''
       mkdir -p $out
 
+      pushd ${subdir} && make -f ${makefile} clean && popd
       # Copy build results
       ${make} program PROGRAM_CMD="cp -p \$^ $out/"
 
