@@ -15,6 +15,7 @@ in
     buildInputs = [ avrgcclibc ];
     makefile = "Makefile.lufa";
     makeFlags = "-C ${subdir}";
+    doDist = false;
     installPhase = ''
       mkdir -p $out
 
@@ -25,6 +26,12 @@ in
       # Put teensy target commands into a script
       cat >$out/${script} <<EOF
       #!/bin/sh
+      # Abort if not root, as normal users don't have permission to flash the
+      # ErgoDox and will end up locking up the keyboard.
+      if [ "\$EUID" -ne 0 ]; then
+        echo "Must be run as root. Aborting."
+        exit
+      fi
       cd $out
       exec $(${make} -n teensy | sed 's@teensy_loader_cli@${loader}@g')
       EOF
