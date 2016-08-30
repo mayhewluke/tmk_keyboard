@@ -198,7 +198,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,--------------------------------------------------.           ,--------------------------------------------------.
      * |  TRNS  | TRNS | TRNS | TRNS | TRNS | TRNS | TRNS |           | TRNS | TRNS | TRNS | TRNS | TRNS | TRNS |  TRNS  |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |  TRNS  |  %   |  $   |  |   |  \   |  #   | TRNS |           | TRNS |      | "+y  |      |      |      |  TRNS  |
+     * |  TRNS  |  %   |  $   |  |   |  \   |  #   | TRNS |           | TRNS | "+y  |      |      |      |      |  TRNS  |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
      * |  TRNS  |  ~   |  `   |  ^   |  ;   |      |------|           |------|      |      |      |      |      |  TRNS  |
      * |--------+------+------+------+------+------| TRNS |           | TRNS |------+------+------+------+------+--------|
@@ -271,7 +271,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
         // right hand
              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS,   KC_NO,  KC_FN4,   KC_NO,   KC_NO,   KC_NO, KC_TRNS,
+             KC_TRNS,  KC_FN4,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_TRNS,
                         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_TRNS,
              KC_TRNS,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_TRNS,
                                KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
