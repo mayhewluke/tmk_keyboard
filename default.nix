@@ -1,4 +1,14 @@
-{ nixpkgs ? import <nixpkgs> {}, keyboard ? "ergodox" }:
+{
+  # Unless given an override, automatically grab the last known working revision
+  # of nixpkgs (17.03), as newer channels make changes to cross-compilation that
+  # break this derivation.
+  nixpkgs ? import ((import <nixpkgs> {}).fetchgit {
+    url = "https://github.com/NixOS/nixpkgs-channels.git";
+    rev = "78e9665b48ff45d3e29f45b3ebeb6fc6c6e19922";
+    sha256 = "09f50jaijvry9lrnx891qmcf92yb8qs64n1cvy0db2yjrmxsxyw8";
+  }) {},
+  keyboard ? "ergodox"
+}:
 
 with nixpkgs;
 with pkgs;
